@@ -1,0 +1,9 @@
+# OpenDesign / OpenCode tool state (not project content)
+.od-frames/
+.od-skills/
+.omo/
+.open-design/
+
+# scratch + personal captures
+.scratch_*
+Screenshot_*
