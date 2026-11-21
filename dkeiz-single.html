@@ -464,7 +464,12 @@ body.ts-open,body.q-open{overflow:hidden}
 .qmore:hover,.qmore:focus-visible{color:var(--ink)}
 .qdialog{position:fixed;inset:0;z-index:150;display:grid;place-items:center;padding:24px;background:rgba(4,4,3,.74);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);opacity:0;visibility:hidden;transition:opacity .25s ease,visibility .25s ease}
 .qdialog.open{opacity:1;visibility:visible}
-.qpanel{position:relative;--acc:var(--rare);width:min(560px,100%);max-height:86vh;overflow:auto;border:1px solid var(--line-2);border-radius:var(--r);background:#0a0908;padding:28px 24px}
+.qpanel{position:relative;--acc:var(--rare);width:min(560px,100%);max-height:86vh;overflow:hidden;display:flex;flex-direction:column;border:1px solid var(--line-2);border-radius:var(--r);background:#0a0908;padding:28px 24px}
+#qcontent,#bcontent{flex:1 1 auto;min-height:0;margin:30px 0 10px;overflow-y:auto;scrollbar-width:thin;scrollbar-color:var(--line-2) transparent}
+#qcontent::-webkit-scrollbar,#bcontent::-webkit-scrollbar{width:5px}
+#qcontent::-webkit-scrollbar-track,#bcontent::-webkit-scrollbar-track{background:transparent}
+#qcontent::-webkit-scrollbar-thumb,#bcontent::-webkit-scrollbar-thumb{background:var(--line);border-radius:999px}
+#qcontent::-webkit-scrollbar-thumb:hover,#bcontent::-webkit-scrollbar-thumb:hover{background:var(--faint)}
 .qpanel h3{font-family:var(--mono);font-weight:800;font-size:1.3rem;margin:10px 0 0;color:var(--ink);padding-right:44px}
 .qdiff{font-family:var(--mono);font-size:12px;letter-spacing:.1em;color:var(--xp);margin:8px 0 0}
 .qbody{color:var(--soft);margin:16px 0 0;font-size:.98rem}
@@ -496,6 +501,12 @@ a.tale:hover{transform:translateY(-2px);border-color:var(--acc)}
 .tmeta{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint)}
 .tale h3{font-family:var(--mono);font-size:1rem;margin:0;color:var(--ink)}
 .tale p{margin:0;color:var(--muted);font-size:.92rem}
+.tread{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--acc)}
+.bpost{margin-top:16px;display:grid;gap:13px}
+.bpost p{margin:0;color:var(--soft);font-size:.98rem;line-height:1.65}
+.bpost h4{font-family:var(--mono);font-weight:800;font-size:1.02rem;margin:20px 0 0;padding-top:16px;border-top:1px solid var(--line);color:var(--ink)}
+.bpost .bquote{margin:16px 0 0;padding:4px 0 4px 14px;border-left:2px solid var(--acc);color:var(--ink);font-family:var(--mono);font-size:.95rem;line-height:1.6}
+.bpost ul{margin:8px 0 0;padding-left:20px;display:grid;gap:7px;color:var(--soft);font-size:.98rem;line-height:1.55}
 
 /* ---------- BESTIARY ---------- */
 .beasts{display:grid}
@@ -626,6 +637,7 @@ a.tale:hover{transform:translateY(-2px);border-color:var(--acc)}
     <a class="map-node" href="#inventory" aria-label="Inventory"><span class="map-label">Inventory</span></a>
     <a class="map-node" href="#achievements" aria-label="Trophies"><span class="map-label">Trophies</span></a>
     <a class="map-node" href="#chronicle" aria-label="Chronicle"><span class="map-label">Chronicle</span></a>
+    <a class="map-node" href="#tavern" aria-label="Tavern"><span class="map-label">Tavern</span></a>
     <a class="map-node" href="#bestiary" aria-label="Bestiary"><span class="map-label">Bestiary</span></a>
     <a class="map-node" href="#merchant" aria-label="Merchant"><span class="map-label">Merchant</span></a>
     <a class="map-node" href="#guild" aria-label="Guild"><span class="map-label">Guild</span></a>
@@ -1117,11 +1129,52 @@ a.tale:hover{transform:translateY(-2px);border-color:var(--acc)}
     </div>
   </section>
 
-  <!-- ===== 07 BESTIARY ===== -->
+  <!-- ===== 07 TAVERN ===== -->
+  <section class="sec" id="tavern">
+    <div class="wrap">
+      <div class="in">
+        <p class="sh"><span class="no">07</span>Tavern<span class="holo-dot" aria-hidden="true"></span></p>
+        <div>
+          <div class="sec-head reveal">
+            <h2 class="decode">Tavern<br><em>Devlog &amp; notes</em></h2>
+            <p class="lead">A corner for the devlog — short notes on gameplay, QA and level design, written between builds.</p>
+          </div>
+          <div class="tales">
+            <a class="tale r-epic reveal" href="#" data-post="playtest" aria-haspopup="dialog">
+              <span class="tmeta">Devlog · Gameplay</span>
+              <h3>Feel is decided in playtests, not in your head</h3>
+              <p>No tuning number survives first contact with the build. Keep the edit-to-play loop under five minutes so a single afternoon can hold twenty real playtests — that's where responsiveness actually gets decided.</p>
+              <span class="tread">Read post →</span>
+            </a>
+            <a class="tale r-rare reveal" href="#" data-post="qa" aria-haspopup="dialog">
+              <span class="tmeta">QA · Method</span>
+              <h3>A QA pass is a checklist, not a vibe</h3>
+              <p>Fixed route, defect classes, severity, exact repro steps. The same discipline as factory test engineering: if it can't be reproduced and logged, it doesn't count — and it doesn't get fixed.</p>
+              <span class="tread">Read post →</span>
+            </a>
+            <a class="tale r-legendary reveal" href="#" data-post="greybox" aria-haspopup="dialog">
+              <span class="tmeta">Level Design · Process</span>
+              <h3>Greybox first, beauty later</h3>
+              <p>Block the level out of primitives and walk the pacing before a single texture is on. If the beat map feels flat in grey, art won't save it — and if it feels great, art only multiplies it.</p>
+              <span class="tread">Read post →</span>
+            </a>
+            <a class="tale r-common reveal" href="#" data-post="script" aria-haspopup="dialog">
+              <span class="tmeta">Automation · Tooling</span>
+              <h3>If you do it twice, script it</h3>
+              <p>Save-scum checks, smoke-test routes, build sanity runs — anything repeated by hand becomes an editor tool. Boring work is exactly the work a script should take, so the time goes into playtesting instead.</p>
+              <span class="tread">Read post →</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 08 BESTIARY ===== -->
   <section class="sec" id="bestiary">
     <div class="wrap">
       <div class="in">
-        <p class="sh"><span class="no">07</span>Bestiary<span class="holo-dot" aria-hidden="true"></span></p>
+        <p class="sh"><span class="no">08</span>Bestiary<span class="holo-dot" aria-hidden="true"></span></p>
         <div>
           <div class="sec-head reveal">
             <h2 class="decode">Bestiary<br><em>Bugs slain</em></h2>
@@ -1154,11 +1207,11 @@ a.tale:hover{transform:translateY(-2px);border-color:var(--acc)}
     </div>
   </section>
 
-  <!-- ===== 08 MERCHANT ===== -->
+  <!-- ===== 09 MERCHANT ===== -->
   <section class="sec" id="merchant">
     <div class="wrap">
       <div class="in">
-        <p class="sh"><span class="no">08</span>Merchant<span class="holo-dot" aria-hidden="true"></span></p>
+        <p class="sh"><span class="no">09</span>Merchant<span class="holo-dot" aria-hidden="true"></span></p>
         <div>
           <div class="sec-head reveal">
             <h2 class="decode">Merchant<br><em>Services on offer</em></h2>
@@ -1196,11 +1249,11 @@ a.tale:hover{transform:translateY(-2px);border-color:var(--acc)}
     </div>
   </section>
 
-  <!-- ===== 09 GUILD ===== -->
+  <!-- ===== 10 GUILD ===== -->
   <section class="sec" id="guild">
     <div class="wrap">
       <div class="in">
-        <p class="sh"><span class="no">09</span>Guild<span class="holo-dot" aria-hidden="true"></span></p>
+        <p class="sh"><span class="no">10</span>Guild<span class="holo-dot" aria-hidden="true"></span></p>
         <div>
           <div class="sec-head reveal">
             <h2 class="decode">Guild<br><em>Party members</em></h2>
@@ -1217,11 +1270,11 @@ a.tale:hover{transform:translateY(-2px);border-color:var(--acc)}
     </div>
   </section>
 
-  <!-- ===== 10 LORE ===== -->
+  <!-- ===== 11 LORE ===== -->
   <section class="sec" id="lore">
     <div class="wrap">
       <div class="in">
-        <p class="sh"><span class="no">10</span>Lore<span class="holo-dot" aria-hidden="true"></span></p>
+        <p class="sh"><span class="no">11</span>Lore<span class="holo-dot" aria-hidden="true"></span></p>
         <div>
           <div class="sec-head reveal">
             <h2 class="decode">Lore<br><em>Character story</em></h2>
@@ -1251,11 +1304,11 @@ a.tale:hover{transform:translateY(-2px);border-color:var(--acc)}
     </div>
   </section>
 
-  <!-- ===== 11 CONTACT ===== -->
+  <!-- ===== 12 CONTACT ===== -->
   <section class="sec" id="contact">
     <div class="wrap">
       <div class="in">
-        <p class="sh"><span class="no">11</span>Recruit<span class="holo-dot" aria-hidden="true"></span></p>
+        <p class="sh"><span class="no">12</span>Recruit<span class="holo-dot" aria-hidden="true"></span></p>
         <div>
           <div class="sec-head reveal">
             <h2 class="decode">Recruit<br><em>Get in touch</em></h2>
@@ -1298,6 +1351,16 @@ a.tale:hover{transform:translateY(-2px);border-color:var(--acc)}
       <svg class="od-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" style="--od-icon-size:18px"><path d="M6 6l12 12M18 6L6 18"></path></svg>
     </button>
     <div id="qcontent"></div>
+  </div>
+</div>
+
+<!-- ===== TAVERN POST DIALOG ===== -->
+<div class="qdialog" id="bdialog" role="dialog" aria-modal="true" aria-labelledby="bTitle">
+  <div class="qpanel hud" id="bpanel">
+    <button class="qclose" id="bclose" type="button" aria-label="Close post">
+      <svg class="od-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" style="--od-icon-size:18px"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+    </button>
+    <div id="bcontent"></div>
   </div>
 </div>
 
@@ -1533,8 +1596,83 @@ a.tale:hover{transform:translateY(-2px);border-color:var(--acc)}
     if (titleScreen && !titleScreen.classList.contains('closed')) { closeTitle(); return; }
     if (ev.key !== 'Escape') { return; }
     if (qdialog && qdialog.classList.contains('open')) { closeQuest(); return; }
+    if (bdialog && bdialog.classList.contains('open')) { closePost(); return; }
     closeNav();
   });
+
+  // ---------- Tavern post dialog ----------
+  var bdialog = document.getElementById('bdialog');
+  var bcontent = document.getElementById('bcontent');
+  var bclose = document.getElementById('bclose');
+  var bpanel = document.getElementById('bpanel');
+  var blastFocus = null;
+  var bposts = {
+    playtest: {
+      acc: "var(--epic)",
+      cat: "Devlog · Gameplay",
+      date: "NOV 2026 · 6 MIN READ",
+      title: "Feel is decided in playtests, not in your head",
+      body: "<p>For the first two months of this project I tuned combat entirely in the editor. I'd watch the attack anim play back, tweak the frame counts, nod at the result — and the very first playtester made me doubt every single number. The character didn't feel like what I had in my head. It felt heavier, slower, and somehow less alive, even though the editor had convinced me it was crisp.</p><h4>The editor lies to you</h4><p>The editor gives you a perfect environment: instant restart, no frame hitches, a display that responds in zero frames, and — most importantly — a brain that already knows what the animation is going to do. That last one matters more than it sounds. When you watch your own anim on the twelfth loop, your brain predicts the impact frame and your feel judgment becomes a memory check, not a perception test.</p><p>A real player discovers the game's response time on their first swing. If input-to-feedback is even a few frames worse than they expect, the character reads as sluggish no matter how clean the frames look in a screenshot.</p><h4>Keep the loop under five minutes</h4><p>So the rule I run on now: the edit-to-play loop must stay under five minutes. Change a number, play the scene, decide. If a single playtest costs twenty minutes of build and reload, you will quietly do fewer of them — and feel dies in the gap between the playtests you actually did.</p><ul><li>Hot-reload tuning values where the engine allows it; restart-in-place where it doesn't.</li><li>A dedicated playtest scene that drops you mid-action, not at a level start.</li><li>Notes in one shared doc, one line per observation — felt late at range, not the attack is slow.</li></ul><h4>Ask why the fun stopped</h4><p>Every playtest session ends with the same question, written into the notes template: where did it stop being fun, and what was the last thing that happened before that? Once, that question pointed at a recovery window I'd been proud of — six frames of recovery made the move feel commit-y, I'd told myself. Players felt it as lag. The fix wasn't a faster animation; it was shorter recovery and a clearer impact frame.</p><p class='bquote'>Numbers are a draft. Feel is the contract.</p><p>Twenty real playtests in one afternoon — possible only because the loop is short — replaced a week of confident editor tuning. The character moved exactly like the frames said it would. It just felt like what players expected it to feel. Those are two different things, and only one of them can be decided by playing.</p>"
+    },
+    qa: {
+      acc: "var(--rare)",
+      cat: "QA · Method",
+      date: "NOV 2026 · 5 MIN READ",
+      title: "A QA pass is a checklist, not a vibe",
+      body: "<p>Played through everything, looks good is not a QA result. It's a mood. The moment I stopped treating QA as something I do to the game and started treating it as something with a procedure, the late-stage bug rate dropped fast — because a procedure finds the same class of bug every time, instead of finding whatever the day's mood happened to touch.</p><h4>The route</h4><p>Every pass walks the same fixed route: spawn, first tutorial room, the three-way split, the optional cave, both boss gates, the ending. The route is written down, and it does not change between builds. That's the whole trick — when the path is constant, any difference you feel between build A and build B is a difference you can actually attribute to the changes you shipped.</p><p>The route doubles as a regression radar. Two bugs I've caught that no free-play session ever would have: a door that only failed to unlock on the second visit to a room (the first visit was always fine), and a tutorial flag that only set if you entered a room from the left. Both required the exact same approach twice in a row to see. Free play never does the same approach twice.</p><h4>Defects need a class</h4><p>Every defect gets one line and one label before anything else: crash, visual, logic, or text. Then a severity — blocks progress, breaks a system, or annoys. The label decides where it goes and how fast it moves; the severity decides whether it blocks the build. Without the class, every bug is a bit important and the list stops meaning anything.</p><h4>Write it so someone else can break it too</h4><p>The repro line has a fixed shape: build, steps, expected, actual. If I can't write that line in a sentence or two, the bug isn't real yet — it's a suspicion, and suspicions go in a separate list where they stay until they earn their repro steps.</p><p class='bquote'>QA isn't about finding more bugs. It's about finding the same class of bugs faster, every pass.</p><p>A pass that ends with a clean route, a classified list, and every fix re-run on the route is a pass that can be trusted. That's the part the vibe never gives you: the confidence that what you didn't find this pass is smaller than what you didn't find last pass.</p>"
+    },
+    greybox: {
+      acc: "var(--legendary)",
+      cat: "Level Design · Process",
+      date: "NOV 2026 · 6 MIN READ",
+      title: "Greybox first, beauty later",
+      body: "<p>The first version of my second level had real walls, real light, and it was still the wrong shape. That was the version that taught me the order of operations: block the level out of grey boxes, prove the pacing, and only then let art in. Every time I've skipped that order since, I've paid for it in discarded art.</p><h4>The paper pass</h4><p>It starts on paper, not in the engine: a beat map. One line per beat — tension up, release, choice, ambush, rest — until the level reads like a rhythm. If the line on paper is flat, no amount of geometry will fix it, and you find that out with a pen instead of a week of construction.</p><h4>Primitives only</h4><p>In the engine the rules are strict: boxes, spheres, capsules. One flat directional light. No textures, no props, no music. The greybox exists to test three questions only — where does the player look, where do they hesitate, where do they rush? A colored cube says checkpoint as loudly as any painted shrine, and a gap says jump without needing a single decal.</p><p>The layout for the three-way choice at the mid-level shrine took four greybox iterations before it worked: first the middle path read as the safe one (it wasn't), then the left path was invisible from the approach, then both — and only on the fourth pass did all three paths read as honest options from the decision point.</p><h4>One variable at a time</h4><p>Each iteration changes exactly one thing. Move the door. Or change the sightline. Or raise the wall. When the feel of the level shifts between two greyboxes, you have to be able to name the change that caused it — otherwise you're not designing, you're decorating in the dark.</p><p class='bquote'>Beauty on a broken layout is just expensive broken.</p><p>When the greybox finally plays right — when you can walk it once and name every beat out loud — the art phase stops being a design tool and becomes what it should be: a multiplier. Texture, light, sound. Each one lands on a layout that already works, so every hour of art is an hour that compounds instead of an hour that hedges.</p>"
+    },
+    script: {
+      acc: "var(--common)",
+      cat: "Automation · Tooling",
+      date: "NOV 2026 · 5 MIN READ",
+      title: "If you do it twice, script it",
+      body: "<p>I caught myself doing the same eleven clicks in a row — launch, load save, jump to the mid-level scene, run the smoke route, close, check the log, write the result — and I just stopped and wrote the script. The rule I follow is deliberately low: if you do it twice, script it. Most people wait for the third or fourth time; by then the hand version has shaped the way you think about the task, and you automate the habits instead of the work.</p><h4>What got scripted first</h4><ul><li>Build sanity — headless launch, sixty seconds, crash check, log scan for the five warnings that predict real breaks. Ninety seconds, every commit, before anyone is told a build exists.</li><li>Smoke route — a dummy input bot walks the first level and the first boss gate. It doesn't play the game; it proves the game starts, loads, and doesn't fall over.</li><li>Save-scum loader — jump straight to any chapter instead of playing through it. Every debug session that used to start at minute twenty now starts at minute zero.</li></ul><h4>Scripts must be tests</h4><p>The line between a tool and a test is output. A script that just runs things is a fancy hand; a script that exits with a pass or a fail, a reason, and a timestamp is a test — and only tests can be left unattended. The build sanity script's whole value is that it can fail while I'm away, so I can come back to a verdict instead of a shrug.</p><h4>Tools rot without an owner</h4><p>Every script lives in the project, next to the code it serves, with a two-line comment saying what it checks and when to re-run it. The scripts I keep are small on purpose — three or four of them, each doing one job well enough that I trust it. One big mega-tool does ten jobs and dies quietly, because the day any one job changes, nobody rewrites the whole thing.</p><p class='bquote'>Every script is a tiny colleague that never sleeps and never forgets a step.</p><p>The payoff isn't the time saved, though it's real — the build check went from fifteen minutes of manual testing to ninety seconds of gate. The payoff is that the boring part of the day has a machine's reliability, so the hours that used to go into procedure go back into the one thing this project is actually about: playing the game, a lot, out loud.</p>"
+    }
+  };
+  function openPost(id) {
+    var p = bposts[id];
+    if (!bdialog || !bcontent || !p) { return; }
+    var html = '';
+    html += '<span class="qtype">' + p.cat + '</span>';
+    html += '<h3 id="bTitle">' + p.title + '</h3>';
+    html += '<p class="qdiff">' + p.date + '</p>';
+    html += '<div class="bpost">' + p.body + '</div>';
+    html += '<button class="qaccept" type="button" data-close-post>Back to the Tavern</button>';
+    bcontent.innerHTML = html;
+    if (bpanel) { bpanel.style.setProperty("--acc", p.acc); }
+    blastFocus = document.activeElement;
+    bdialog.classList.add("open");
+    document.body.classList.add("q-open");
+    setInert(true);
+    if (bclose) { bclose.focus(); }
+  }
+  function closePost() {
+    if (!bdialog) { return; }
+    bdialog.classList.remove("open");
+    document.body.classList.remove("q-open");
+    setInert(false);
+    if (blastFocus && blastFocus.focus) { blastFocus.focus(); }
+  }
+  Array.prototype.forEach.call(document.querySelectorAll(".tale[data-post]"), function (a) {
+    a.addEventListener("click", function (ev) {
+      ev.preventDefault();
+      openPost(a.getAttribute("data-post"));
+    });
+  });
+  if (bclose) { bclose.addEventListener("click", closePost); }
+  if (bdialog) {
+    bdialog.addEventListener("click", function (ev) {
+      if (ev.target === bdialog) { closePost(); }
+      else if (ev.target.closest && ev.target.closest("[data-close-post]")) { closePost(); }
+    });
+  }
 
   // Bars — fill width + energy sweep + number count-up (triggered on scroll)
   var bars = Array.prototype.slice.call(document.querySelectorAll('.bar .fill[data-p]'));
