@@ -5,6 +5,11 @@
 <title>Dkeiz Dương — Character Sheet · Unity Game Dev · QA · Level Design</title>
 <meta name="description" content="Personal portfolio of Dkeiz Dương (Dao Quang Duong) — Unity game developer with 7 years of experience, presented as a character sheet from a role-playing game.">
 <meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#070606">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Dkeiz Dương — Character Sheet · Unity Game Dev · QA · Level Design">
+<meta property="og:description" content="Unity game developer presented as an RPG character sheet: gameplay systems, QA and level design. Two games on Steam.">
+<meta name="twitter:card" content="summary">
 <link rel="icon" href="assets/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
@@ -74,7 +79,7 @@
   --ink:#efe9dd;
   --soft:#cfc8ba;
   --muted:#9a9284;
-  --faint:#6a6358;
+  --faint:#807969;
   --line:rgba(239,233,221,.1);
   --line-2:rgba(239,233,221,.2);
   --holo:linear-gradient(120deg,#7fe3f5 0%,#b49cff 50%,#ff9fd8 100%);
@@ -302,7 +307,7 @@ h2.decode{
 .stats-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;margin-top:56px;border-top:1px solid var(--line);padding-top:34px}
 .stat b{display:block;font-family:var(--mono);font-weight:800;font-size:clamp(2.2rem,5vw,3.4rem);letter-spacing:-.05em;line-height:1;color:var(--ink)}
 .stat b .holo-txt{font-size:.5em;margin-left:4px}
-.stat span{display:block;margin-top:10px;font-family:var(--mono);font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.stat > span{display:block;margin-top:10px;font-family:var(--mono);font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
 
 /* ---------- SKILLS ---------- */
 .skill-groups{display:grid;gap:34px}
@@ -407,7 +412,7 @@ h2.decode{
 .ts-toast{font-family:var(--mono);font-size:12px;color:var(--legendary);margin:16px 0 0;min-height:1.2em;opacity:0;transition:opacity .3s}
 .ts-toast.show{opacity:1}
 .ts-hint{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);margin:26px 0 0}
-body.ts-open{overflow:hidden}
+body.ts-open,body.q-open{overflow:hidden}
 
 /* ---------- SCROLL PROGRESS + WORLD MAP RAIL ---------- */
 .scroll-progress{position:fixed;top:0;left:0;height:2px;width:0;background:var(--holo);z-index:70;transition:width .1s linear}
@@ -441,7 +446,7 @@ body.ts-open{overflow:hidden}
 .node.locked .nname{color:var(--faint)}
 .node.locked .nname::before{background:transparent;border:1px solid var(--line-2);box-shadow:none}
 .node[data-tip]::after{content:attr(data-tip);position:absolute;right:0;bottom:calc(100% + 6px);width:max-content;max-width:230px;font-family:var(--mono);font-size:11px;line-height:1.5;color:var(--soft);background:#0c0b0a;border:1px solid var(--line-2);border-radius:8px;padding:8px 10px;opacity:0;visibility:hidden;transform:translateY(4px);transition:opacity .18s,visibility .18s,transform .18s;pointer-events:none;z-index:6}
-.node[data-tip]:hover::after,.node[data-tip]:focus-visible::after{opacity:1;visibility:visible;transform:none}
+.node[data-tip]:hover::after,.node[data-tip]:focus::after{opacity:1;visibility:visible;transform:none}
 
 /* ---------- QUEST TYPE + DETAIL DIALOG ---------- */
 .qtype{display:inline-block;font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--acc,var(--rare));border:1px solid var(--acc,var(--rare));border-radius:999px;padding:3px 9px;margin-bottom:10px}
@@ -479,7 +484,7 @@ body.ts-open{overflow:hidden}
 /* ---------- TAVERN ---------- */
 .tales{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
 .tale{--acc:var(--epic);border:1px solid var(--line);border-radius:14px;padding:18px;background:var(--panel);color:inherit;text-decoration:none;display:grid;gap:9px;transition:transform .2s ease,border-color .2s ease}
-.tale:hover{transform:translateY(-2px);border-color:var(--acc)}
+a.tale:hover{transform:translateY(-2px);border-color:var(--acc)}
 .tmeta{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint)}
 .tale h3{font-family:var(--mono);font-size:1rem;margin:0;color:var(--ink)}
 .tale p{margin:0;color:var(--muted);font-size:.92rem}
@@ -713,7 +718,7 @@ body.ts-open{overflow:hidden}
               <span class="aval">92</span>
               <span class="bar"><i class="fill" data-p="92" role="progressbar" aria-label="Unity engine" aria-valuenow="92" aria-valuemin="0" aria-valuemax="100"></i></span>
             </div>
-            <div class="attr r-epic reveal">
+            <div class="attr r-legendary reveal">
               <span class="aname">C# Programming <em>· CSH</em></span>
               <span class="aval">90</span>
               <span class="bar"><i class="fill" data-p="90" role="progressbar" aria-label="C# programming" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></i></span>
@@ -723,25 +728,25 @@ body.ts-open{overflow:hidden}
               <span class="aval">88</span>
               <span class="bar"><i class="fill" data-p="88" role="progressbar" aria-label="Gameplay systems" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100"></i></span>
             </div>
-            <div class="attr r-rare reveal">
+            <div class="attr r-epic reveal">
               <span class="aname">QA / Testing <em>· QA</em></span>
               <span class="aval">82</span>
               <span class="bar"><i class="fill" data-p="82" role="progressbar" aria-label="QA and testing" aria-valuenow="82" aria-valuemin="0" aria-valuemax="100"></i></span>
+            </div>
+            <div class="attr r-epic reveal">
+              <span class="aname">Communication / Teamwork <em>· CHA</em></span>
+              <span class="aval">76</span>
+              <span class="bar"><i class="fill" data-p="76" role="progressbar" aria-label="Communication and teamwork" aria-valuenow="76" aria-valuemin="0" aria-valuemax="100"></i></span>
             </div>
             <div class="attr r-rare reveal">
               <span class="aname">Level Design <em>· LEVEL</em></span>
               <span class="aval">74</span>
               <span class="bar"><i class="fill" data-p="74" role="progressbar" aria-label="Level design" aria-valuenow="74" aria-valuemin="0" aria-valuemax="100"></i></span>
             </div>
-            <div class="attr r-epic reveal">
+            <div class="attr r-rare reveal">
               <span class="aname">Data Analysis <em>· DATA</em></span>
               <span class="aval">70</span>
               <span class="bar"><i class="fill" data-p="70" role="progressbar" aria-label="Data analysis" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></i></span>
-            </div>
-            <div class="attr r-legendary reveal">
-              <span class="aname">Communication / Teamwork <em>· CHA</em></span>
-              <span class="aval">76</span>
-              <span class="bar"><i class="fill" data-p="76" role="progressbar" aria-label="Communication and teamwork" aria-valuenow="76" aria-valuemin="0" aria-valuemax="100"></i></span>
             </div>
           </div>
 
@@ -773,11 +778,11 @@ body.ts-open{overflow:hidden}
                 <div><p class="bname">Artificer</p><span class="bdesc">Programming</span></div>
               </div>
               <ul class="nodes">
-                <li class="node" tabindex="0" data-tip="C# — OOP, component-based, events. Rank 5/5."><span class="nname">C#</span><span class="pips" aria-label="5 out of 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></li>
-                <li class="node" tabindex="0" data-tip="SQL — data queries for analysis. Rank 3/5."><span class="nname">SQL</span><span class="pips" aria-label="3 out of 5"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span></li>
-                <li class="node" tabindex="0" data-tip="GitHub — version control in every project. Rank 4/5."><span class="nname">GitHub</span><span class="pips" aria-label="4 out of 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span></li>
-                <li class="node" tabindex="0" data-tip="Debugging — reading errors and fixing fast. Rank 4/5."><span class="nname">Debugging</span><span class="pips" aria-label="4 out of 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span></li>
-                <li class="node" tabindex="0" data-tip="Unity Profiling — finding the real bottlenecks. Rank 4/5."><span class="nname">Unity Profiling</span><span class="pips" aria-label="4 out of 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span></li>
+                <li class="node" tabindex="0" data-tip="C# — OOP, component-based, events. Rank 5/5."><span class="nname">C#</span><span class="pips" role="img" aria-label="5 out of 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></li>
+                <li class="node" tabindex="0" data-tip="SQL — data queries for analysis. Rank 3/5."><span class="nname">SQL</span><span class="pips" role="img" aria-label="3 out of 5"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span></li>
+                <li class="node" tabindex="0" data-tip="GitHub — version control in every project. Rank 4/5."><span class="nname">GitHub</span><span class="pips" role="img" aria-label="4 out of 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span></li>
+                <li class="node" tabindex="0" data-tip="Debugging — reading errors and fixing fast. Rank 4/5."><span class="nname">Debugging</span><span class="pips" role="img" aria-label="4 out of 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span></li>
+                <li class="node" tabindex="0" data-tip="Unity Profiling — finding the real bottlenecks. Rank 4/5."><span class="nname">Unity Profiling</span><span class="pips" role="img" aria-label="4 out of 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span></li>
               </ul>
             </div>
 
@@ -787,12 +792,12 @@ body.ts-open{overflow:hidden}
                 <div><p class="bname">Engineer</p><span class="bdesc">Game dev</span></div>
               </div>
               <ul class="nodes">
-                <li class="node" tabindex="0" data-tip="Unity — 2D &amp; 2.5D, animation and URP. Rank 5/5."><span class="nname">Unity</span><span class="pips" aria-label="5 out of 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></li>
-                <li class="node" tabindex="0" data-tip="Figma — UI design. Rank 3/5."><span class="nname">Figma</span><span class="pips" aria-label="3 out of 5"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span></li>
-                <li class="node" tabindex="0" data-tip="Photoshop — 2D art and sprites. Rank 2/5."><span class="nname">Photoshop</span><span class="pips" aria-label="2 out of 5"><i class="on"></i><i class="on"></i><i></i><i></i><i></i></span></li>
-                <li class="node" tabindex="0" data-tip="Jira / Trello — sprints and task tracking. Rank 4/5."><span class="nname">Jira / Trello</span><span class="pips" aria-label="4 out of 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span></li>
-                <li class="node locked" tabindex="0" data-tip="Multiplayer netcode — locked until 5 shipped games."><span class="nname">Multiplayer Netcode</span><span class="pips" aria-label="Locked"><i></i><i></i><i></i><i></i><i></i></span></li>
-                <li class="node locked" tabindex="0" data-tip="Shader Programming — locked until 10 shipped games."><span class="nname">Shader Programming</span><span class="pips" aria-label="Locked"><i></i><i></i><i></i><i></i><i></i></span></li>
+                <li class="node" tabindex="0" data-tip="Unity — 2D &amp; 2.5D, animation and URP. Rank 5/5."><span class="nname">Unity</span><span class="pips" role="img" aria-label="5 out of 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></li>
+                <li class="node" tabindex="0" data-tip="Figma — UI design. Rank 3/5."><span class="nname">Figma</span><span class="pips" role="img" aria-label="3 out of 5"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span></li>
+                <li class="node" tabindex="0" data-tip="Photoshop — 2D art and sprites. Rank 2/5."><span class="nname">Photoshop</span><span class="pips" role="img" aria-label="2 out of 5"><i class="on"></i><i class="on"></i><i></i><i></i><i></i></span></li>
+                <li class="node" tabindex="0" data-tip="Jira / Trello — sprints and task tracking. Rank 4/5."><span class="nname">Jira / Trello</span><span class="pips" role="img" aria-label="4 out of 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span></li>
+                <li class="node locked" tabindex="0" data-tip="Multiplayer netcode — locked until 5 shipped games."><span class="nname">Multiplayer Netcode</span><span class="pips" role="img" aria-label="Locked"><i></i><i></i><i></i><i></i><i></i></span></li>
+                <li class="node locked" tabindex="0" data-tip="Shader Programming — locked until 10 shipped games."><span class="nname">Shader Programming</span><span class="pips" role="img" aria-label="Locked"><i></i><i></i><i></i><i></i><i></i></span></li>
               </ul>
             </div>
 
@@ -802,11 +807,11 @@ body.ts-open{overflow:hidden}
                 <div><p class="bname">Architect</p><span class="bdesc">Game design</span></div>
               </div>
               <ul class="nodes">
-                <li class="node" tabindex="0" data-tip="Systems Design — rules that create play. Rank 4/5."><span class="nname">Systems Design</span><span class="pips" aria-label="4 out of 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span></li>
-                <li class="node" tabindex="0" data-tip="Level Design — pacing, layout and teaching. Rank 3/5."><span class="nname">Level Design</span><span class="pips" aria-label="3 out of 5"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span></li>
-                <li class="node" tabindex="0" data-tip="Difficulty Balancing — damage and difficulty curves. Rank 4/5."><span class="nname">Difficulty Balancing</span><span class="pips" aria-label="4 out of 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span></li>
-                <li class="node" tabindex="0" data-tip="Playtesting — watching real players. Rank 3/5."><span class="nname">Playtesting</span><span class="pips" aria-label="3 out of 5"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span></li>
-                <li class="node locked" tabindex="0" data-tip="Narrative Design — locked until the next story-heavy project."><span class="nname">Narrative Design</span><span class="pips" aria-label="Locked"><i></i><i></i><i></i><i></i><i></i></span></li>
+                <li class="node" tabindex="0" data-tip="Systems Design — rules that create play. Rank 4/5."><span class="nname">Systems Design</span><span class="pips" role="img" aria-label="4 out of 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span></li>
+                <li class="node" tabindex="0" data-tip="Level Design — pacing, layout and teaching. Rank 3/5."><span class="nname">Level Design</span><span class="pips" role="img" aria-label="3 out of 5"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span></li>
+                <li class="node" tabindex="0" data-tip="Difficulty Balancing — damage and difficulty curves. Rank 4/5."><span class="nname">Difficulty Balancing</span><span class="pips" role="img" aria-label="4 out of 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span></li>
+                <li class="node" tabindex="0" data-tip="Playtesting — watching real players. Rank 3/5."><span class="nname">Playtesting</span><span class="pips" role="img" aria-label="3 out of 5"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span></li>
+                <li class="node locked" tabindex="0" data-tip="Narrative Design — locked until the next story-heavy project."><span class="nname">Narrative Design</span><span class="pips" role="img" aria-label="Locked"><i></i><i></i><i></i><i></i><i></i></span></li>
               </ul>
             </div>
           </div>
@@ -831,7 +836,7 @@ body.ts-open{overflow:hidden}
               data-title="Curtain Call" data-diff="Difficulty ★★★★☆" data-link="https://store.steampowered.com/app/2812610/_Curtain_Call/"
               data-tech="Unity,Level Design,QA"
               data-loot="Role:Level Design + QA|Duration:8 months|Team:GD Studio|Store:Steam"
-              data-body="Tinh chỉnh level design; test gameplay, tính năng và nội dung; tìm, ghi nhận và theo dõi bug; phản hồi về độ khó, progression, tính truy cập và UX. GD Studio (remote), Aug 2024 – Apr 2025.">
+              data-body="Refined level design; tested gameplay, features and content; found, logged and tracked bugs; gave feedback on difficulty, progression, accessibility and UX. GD Studio (remote), Aug 2024 – Apr 2025.">
               <span class="qmark" aria-hidden="true">Epic</span>
               <div>
                 <span class="qtype">Main Quest</span>
@@ -847,7 +852,7 @@ body.ts-open{overflow:hidden}
               data-title="Noobs Want to Live" data-diff="Difficulty ★★★★★" data-link="https://store.steampowered.com/app/1737340/Noobs_Want_to_Live/"
               data-tech="Unity,C#,Gameplay Systems"
               data-loot="Role:Gameplay Programmer|Duration:1 year|Engine:Unity|Store:Steam"
-              data-body="Xây hệ thống gameplay cốt lõi: di chuyển, chiến đấu, né, hit detection; kỹ năng module hoá; tối ưu hiệu năng cho các màn đạn và địch dày đặc; AI địch và boss; cân bằng sát thương và độ khó; hệ thống roguelike: nâng cấp, trang bị, meta progression. GD Studio (remote), Aug 2023 – Jul 2024.">
+              data-body="Built the core gameplay systems: movement, combat, dodge and hit detection; modular skills; performance optimisation for dense bullet and enemy screens; enemy and boss AI; damage and difficulty balancing; roguelike systems — upgrades, gear and meta progression. GD Studio (remote), Aug 2023 – Jul 2024.">
               <span class="qmark" aria-hidden="true">Legendary</span>
               <div>
                 <span class="qtype">Main Quest</span>
@@ -860,10 +865,10 @@ body.ts-open{overflow:hidden}
             </article>
 
             <article class="quest r-rare reveal"
-              data-title="Book Recommendation System" data-diff="Difficulty ★★★☆☆" data-link="https://github.com/Duong-DQ"
+              data-title="Book Recommendation System" data-diff="Difficulty ★★★☆☆" data-link=""
               data-tech="SQL,Data Cleaning,Visualization"
               data-loot="Role:Data Analyst / QA|Duration:2 years|Team:HUST Lab"
-              data-body="Kiểm tra, làm sạch và xử lý dữ liệu cho bộ dữ liệu sách: giá trị khuyết, đặc trưng phân loại và số (đánh giá, bình luận); phân tích và trực quan hoá. HUST Lab, Apr 2021 – Mar 2023.">
+              data-body="Inspected, cleaned and processed a book dataset: missing values, categorical and numeric features (ratings, reviews); analysis and visualisation. HUST Lab, Apr 2021 – Mar 2023.">
               <span class="qmark" aria-hidden="true">Rare</span>
               <div>
                 <span class="qtype">Side Quest</span>
@@ -876,10 +881,10 @@ body.ts-open{overflow:hidden}
             </article>
 
             <article class="quest r-common reveal"
-              data-title="Kingdom Raids — Puzzle Wars" data-diff="Difficulty ★★☆☆☆" data-link="https://github.com/Duong-DQ"
+              data-title="Kingdom Raids — Puzzle Wars" data-diff="Difficulty ★★☆☆☆" data-link=""
               data-tech="Unity,Git,Agile"
               data-loot="Role:Intern|Duration:8 months|Team:Gear Inc."
-              data-body="Hỗ trợ quy trình build Unity và luồng asset; làm việc theo Agile với Git. Gear Inc., Hanoi, Jun 2020 – Jan 2021.">
+              data-body="Supported the Unity build pipeline and asset workflow; worked in Agile with Git. Gear Inc., Hanoi, Jun 2020 – Jan 2021.">
               <span class="qmark" aria-hidden="true">Common</span>
               <div>
                 <span class="qtype">Side Quest</span>
@@ -976,7 +981,7 @@ body.ts-open{overflow:hidden}
           <div class="achv">
             <div class="badge r-legendary reveal">
               <div class="bmark"><svg class="od-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 01-10 0z"></path><path d="M7 6H4v2a3 3 0 003 3M17 6h3v2a3 3 0 01-3 3"></path></svg></div>
-              <div><p class="btitle">Shipped a Game</p><span class="bsub">1 title on Steam</span></div>
+              <div><p class="btitle">Shipped to Steam</p><span class="bsub">2 titles released</span></div>
             </div>
             <div class="badge r-epic reveal">
               <div class="bmark"><svg class="od-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17l6-6 4 4 8-8"></path><path d="M14 7h7v7"></path></svg></div>
@@ -1056,11 +1061,11 @@ body.ts-open{overflow:hidden}
             <p class="lead">A corner for the devlog — notes on gameplay, QA and level design. No posts yet, but they're coming.</p>
           </div>
           <div class="tales">
-            <a class="tale r-epic reveal" href="#">
+            <div class="tale r-epic reveal">
               <span class="tmeta">Devlog · Coming soon</span>
               <h3>Game-making notes</h3>
               <p>No posts yet — a devlog on gameplay, QA and level design is on the way.</p>
-            </a>
+            </div>
           </div>
         </div>
       </div>
@@ -1190,7 +1195,7 @@ body.ts-open{overflow:hidden}
     </div>
   </section>
 
-  <!-- ===== 07 CONTACT ===== -->
+  <!-- ===== 12 CONTACT ===== -->
   <section class="sec" id="contact">
     <div class="wrap">
       <div class="in">
@@ -1282,9 +1287,21 @@ body.ts-open{overflow:hidden}
     });
   });
 
+  // Close the mobile menu on outside click
+  document.addEventListener('click', function (ev) {
+    if (nav && nav.classList.contains('open') && !nav.contains(ev.target)) { closeNav(); }
+  });
+
   // Year
   var y = document.getElementById('year');
   if (y) { y.textContent = String(new Date().getFullYear()); }
+
+  // Keep the page behind a modal out of the tab order / a11y tree
+  function setInert(on) {
+    Array.prototype.forEach.call(document.querySelectorAll('main, .nav, .maprail, footer'), function (el) {
+      if (on) { el.setAttribute('inert', ''); } else { el.removeAttribute('inert'); }
+    });
+  }
 
   // ---------- Title screen + typewriter ----------
   var titleScreen = document.getElementById('titleScreen');
@@ -1297,10 +1314,18 @@ body.ts-open{overflow:hidden}
     if (!tw || reduce) { return; }
     var full = tw.textContent;
     var i = 0;
+    // Reserve the final height (no layout jump) and keep the full text for screen readers
+    var host = tw.parentNode;
+    host.style.minHeight = host.offsetHeight + 'px';
+    var sr = document.createElement('span');
+    sr.className = 'sr';
+    sr.textContent = full;
+    host.insertBefore(sr, tw);
+    tw.setAttribute('aria-hidden', 'true');
     tw.textContent = '';
     var t = setInterval(function () {
       tw.textContent = full.slice(0, ++i);
-      if (i >= full.length) { clearInterval(t); }
+      if (i >= full.length) { clearInterval(t); host.style.minHeight = ''; }
     }, 20);
   }
   function closeTitle() {
@@ -1308,16 +1333,23 @@ body.ts-open{overflow:hidden}
       titleScreen.classList.add('closed');
     }
     document.body.classList.remove('ts-open');
+    setInert(false);
     startTyping();
   }
-  if (titleScreen) {
+  var deepLink = location.hash.length > 1 && !!document.getElementById(location.hash.slice(1));
+  if (titleScreen && deepLink) {
+    // shared link to a section: skip the title screen
+    titleScreen.classList.add('closed');
+    startTyping();
+  } else if (titleScreen) {
     document.body.classList.add('ts-open');
+    setInert(true);
     var firstTs = titleScreen.querySelector('.ts-btn');
     if (firstTs) { setTimeout(function () { firstTs.focus(); }, 80); }
     Array.prototype.forEach.call(titleScreen.querySelectorAll('[data-start]'), function (btn) {
       btn.addEventListener('click', function () {
         if (btn.getAttribute('data-start') === 'load' && tsToast) {
-          tsToast.textContent = tr('> No save file found — starting a new game instead.');
+          tsToast.textContent = '> No save file found — starting a new game instead.';
           tsToast.classList.add('show');
           setTimeout(closeTitle, 900);
           return;
@@ -1408,18 +1440,22 @@ body.ts-open{overflow:hidden}
       html += '</div></div>';
     }
     if (link && link !== '#') {
-      html += '<a class="qaccept" href="' + escHtml(link) + '" target="_blank" rel="noopener">Accept Quest →</a>';
+      html += '<a class="qaccept" href="' + escHtml(link) + '" target="_blank" rel="noopener">' + (/steampowered\.com/.test(link) ? 'View on Steam ↗' : 'Open link ↗') + '</a>';
     } else {
-      html += '<button class="qaccept" type="button" data-close-quest>Accept Quest →</button>';
+      html += '<button class="qaccept" type="button" data-close-quest>Back to Quest Log</button>';
     }
     qcontent.innerHTML = html;
     qlastFocus = document.activeElement;
     qdialog.classList.add('open');
+    document.body.classList.add('q-open');
+    setInert(true);
     if (qclose) { qclose.focus(); }
   }
   function closeQuest() {
     if (!qdialog) { return; }
     qdialog.classList.remove('open');
+    document.body.classList.remove('q-open');
+    setInert(false);
     if (qlastFocus && qlastFocus.focus) { qlastFocus.focus(); }
   }
   Array.prototype.forEach.call(document.querySelectorAll('.quest .qmore'), function (btn) {
@@ -1438,13 +1474,9 @@ body.ts-open{overflow:hidden}
   document.addEventListener('keydown', function (ev) {
     if (ev.key !== 'Escape') { return; }
     if (qdialog && qdialog.classList.contains('open')) { closeQuest(); return; }
-    if (titleScreen && !titleScreen.classList.contains('closed')) { closeTitle(); }
+    if (titleScreen && !titleScreen.classList.contains('closed')) { closeTitle(); return; }
+    closeNav();
   });
-
-  // ---------- Language switch (EN default) ----------
-  // The document is authored in English; Vietnamese lives in this dictionary.
-  // Switching walks the text nodes / a few attributes and swaps known strings.
-  function tr(s) { return s; }
 
   // Bars — fill width + energy sweep + number count-up (triggered on scroll)
   var bars = Array.prototype.slice.call(document.querySelectorAll('.bar .fill[data-p]'));
