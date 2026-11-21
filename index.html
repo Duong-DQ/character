@@ -517,8 +517,9 @@ a.tale:hover{transform:translateY(-2px);border-color:var(--acc)}
 
 /* ---------- GUILD ---------- */
 .party{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
-.member{--acc:var(--rare);border:1px solid var(--line);border-radius:14px;padding:16px;background:var(--panel);display:grid;grid-template-columns:44px minmax(0,1fr);gap:13px;align-items:center}
-.mava{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;font-family:var(--mono);font-weight:800;font-size:.9rem;color:var(--ink);border:1px solid var(--acc);background:linear-gradient(180deg,color-mix(in srgb,var(--acc) 20%,transparent),transparent)}
+.member{--acc:var(--rare);border:1px solid var(--line);border-radius:14px;padding:16px;background:var(--panel);display:grid;grid-template-columns:64px minmax(0,1fr);gap:13px;align-items:center}
+.mava{width:64px;height:48px;border-radius:10px;display:grid;place-items:center;font-family:var(--mono);font-weight:800;font-size:.95rem;color:var(--ink);border:1px solid var(--acc);background:rgba(239,233,221,.03);overflow:hidden}
+.mava img{max-width:calc(100% - 12px);max-height:calc(100% - 12px);width:auto;height:auto;display:block}
 .mname{font-family:var(--mono);font-weight:700;font-size:.95rem;color:var(--ink);margin:0}
 .mrole{font-family:var(--mono);font-size:11px;color:var(--muted);display:block;margin-top:3px}
 
@@ -1198,10 +1199,10 @@ a.tale:hover{transform:translateY(-2px);border-color:var(--acc)}
             <p class="lead">The teams I've fought alongside on projects.</p>
           </div>
           <div class="party">
-            <div class="member r-legendary reveal"><span class="mava" aria-hidden="true">PV</span><div><p class="mname">PEGATRON VIETNAM</p><span class="mrole">Automation · AI Workflow · Process Improvement · since 2026</span></div></div>
-            <div class="member r-epic reveal"><span class="mava" aria-hidden="true">GD</span><div><p class="mname">GD Studio</p><span class="mrole">Remote team · 2023 – 2025</span></div></div>
-            <div class="member r-rare reveal"><span class="mava" aria-hidden="true">HU</span><div><p class="mname">HUST Lab</p><span class="mrole">Hanoi · 2021 – 2023</span></div></div>
-            <div class="member r-rare reveal"><span class="mava" aria-hidden="true">GI</span><div><p class="mname">Gear Inc.</p><span class="mrole">Hanoi · 2020 – 2021</span></div></div>
+            <div class="member r-legendary reveal"><span class="mava"><img src="assets/guild/pegatron.png" alt="PEGATRON logo"></span><div><p class="mname">Pegatron VN</p><span class="mrole">Haiphong ·</br>2026 - now</span></div></div>
+            <div class="member r-epic reveal"><span class="mava"><img src="assets/guild/gd-studio.png" alt="GD Studio logo"></span><div><p class="mname">GD Studio</p><span class="mrole">China · Remote</br>2023 – 2025</span></div></div>
+            <div class="member r-rare reveal"><span class="mava"><img src="assets/guild/hust-lab.png" alt="HUST Lab logo"></span><div><p class="mname">SoICT Lab</p><span class="mrole">Hanoi ·</br>2021 – 2023</span></div></div>
+            <div class="member r-rare reveal"><span class="mava"><img src="assets/guild/gear-inc.png" alt="Gear Inc. logo"></span><div><p class="mname">Gear Inc.</p><span class="mrole">Hanoi ·</br>2020 – 2021</span></div></div>
           </div>
         </div>
       </div>
