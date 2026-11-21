@@ -150,6 +150,7 @@ h2.decode{
 }
 .decode em{font-style:italic;font-weight:400;color:var(--muted);font-size:.92em}
 .lead{color:var(--soft);max-width:60ch;margin:20px 0 0;font-size:1.05rem}
+.hero-quote{font-family:var(--mono);font-style:italic;color:var(--muted);margin:18px 0 0;max-width:52ch;font-size:.98rem}
 .fine{font-family:var(--mono);font-size:13px;color:var(--faint);line-height:1.8;margin:44px 0 0}
 
 /* ---------- HUD FRAME (corner brackets) ---------- */
@@ -185,7 +186,7 @@ h2.decode{
 }
 .brand{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-weight:700;letter-spacing:.06em;white-space:nowrap}
 .brand-leaf{block-size:22px;inline-size:auto;display:block}
-.foot-leaf{block-size:clamp(2rem,6vw,3.6rem)}
+.foot-leaf{block-size:.78em}
 .cur{inline-size:8px;block-size:15px;background:var(--holo);display:inline-block;animation:blink 1.1s steps(1) infinite}
 @keyframes blink{50%{opacity:0}}
 .nav-links{display:flex;align-items:center;gap:22px;padding-right:12px}
@@ -306,8 +307,8 @@ h2.decode{
 
 .stats-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;margin-top:56px;border-top:1px solid var(--line);padding-top:34px}
 .stat b{display:block;font-family:var(--mono);font-weight:800;font-size:clamp(2.2rem,5vw,3.4rem);letter-spacing:-.05em;line-height:1;color:var(--ink)}
-.stat b .holo-txt{font-size:.5em;margin-left:4px}
-.stat > span{display:block;margin-top:10px;font-family:var(--mono);font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.stat .sunit{display:block;margin-top:8px;font-family:var(--mono);font-weight:600;font-size:1.1rem;letter-spacing:.01em}
+.stat .slab{display:block;margin-top:10px;font-family:var(--mono);font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
 
 /* ---------- SKILLS ---------- */
 .skill-groups{display:grid;gap:34px}
@@ -499,16 +500,16 @@ a.tale:hover{transform:translateY(-2px);border-color:var(--acc)}
 .bfix{font-family:var(--mono);font-size:11px;color:var(--faint);white-space:nowrap}
 
 /* ---------- MERCHANT ---------- */
-.goods{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px}
-.good{--acc:var(--rare);border:1px solid var(--line);border-radius:14px;padding:18px;background:var(--panel);display:grid;gap:12px;align-content:start}
+.goods{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+.good{--acc:var(--rare);border:1px solid var(--line);border-radius:14px;padding:18px;background:var(--panel);display:flex;flex-direction:column;gap:12px}
 .good .gname{font-family:var(--mono);font-weight:700;color:var(--ink);margin:0}
 .good ul{display:grid;gap:7px}
 .good li{font-family:var(--mono);font-size:12px;color:var(--muted);padding-left:16px;position:relative}
 .good li::before{content:"◆";position:absolute;left:0;top:1px;color:var(--acc);font-size:9px}
-.gprice{font-family:var(--mono);font-weight:800;font-size:1.05rem;color:var(--ink);border-top:1px solid var(--line);padding-top:12px}
+.gprice{margin-top:auto;font-family:var(--mono);font-weight:800;font-size:1.05rem;color:var(--ink);border-top:1px solid var(--line);padding-top:12px}
 
 /* ---------- GUILD ---------- */
-.party{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px}
+.party{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
 .member{--acc:var(--rare);border:1px solid var(--line);border-radius:14px;padding:16px;background:var(--panel);display:grid;grid-template-columns:44px minmax(0,1fr);gap:13px;align-items:center}
 .mava{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;font-family:var(--mono);font-weight:800;font-size:.9rem;color:var(--ink);border:1px solid var(--acc);background:linear-gradient(180deg,color-mix(in srgb,var(--acc) 20%,transparent),transparent)}
 .mname{font-family:var(--mono);font-weight:700;font-size:.95rem;color:var(--ink);margin:0}
@@ -658,7 +659,8 @@ a.tale:hover{transform:translateY(-2px);border-color:var(--acc)}
             <span class="chip">Guild · Student</span>
           </div>
 
-          <p class="lead"><span data-typewriter>Seven years in games: Unity gameplay systems, enemy AI, and the performance work that keeps bullet hells at 60 FPS. Two games on Steam, 20+ projects in the log. I play the bug hunter too — finding, logging and verifying issues before players do. Now studying for a BEng in ICT at HUST.</span><span class="type-caret" aria-hidden="true"></span></p>
+          <p class="lead"><span data-typewriter>Seven years in games: Unity gameplay systems, enemy AI, and the performance work. Two games on Steam, 20+ projects in the log. M.Eng. in ICT at HUST — now studying a BBA at PTIT and working as an AI workflow consultant at PEGATRON.</span><span class="type-caret" aria-hidden="true"></span></p>
+          <p class="hero-quote">"To play before the player play, and win after the players win."</p>
 
           <div class="vitals" role="group" aria-label="Character vital stats">
             <div class="vital">
@@ -689,13 +691,13 @@ a.tale:hover{transform:translateY(-2px);border-color:var(--acc)}
         </div>
 
         <div class="avatar-wrap hud">
-          <span class="lvl-badge">LV <b>42</b></span>
+          <span class="lvl-badge">LV <b>27</b></span>
           <div class="avatar-svg avatar-mark" role="img" aria-label="Holographic logo of Dkeiz Dương">
             <img class="avatar-logo" src="assets/logo-holo.svg" alt="" aria-hidden="true" width="997" height="1031">
             <span class="avatar-scan" aria-hidden="true"></span>
-            <span class="avatar-id" aria-hidden="true">ID-A4209</span>
+            <span class="avatar-id" aria-hidden="true">ID-Y2K1</span>
           </div>
-          <div class="avatar-tag"><span>Dkeiz.Dương</span><span>Lv.42 · Dev</span></div>
+          <div class="avatar-tag"><span>Dkeiz.Dương</span><span>Lv.27 · Dev</span></div>
         </div>
       </div>
     </div>
@@ -751,9 +753,9 @@ a.tale:hover{transform:translateY(-2px);border-color:var(--acc)}
           </div>
 
           <div class="stats-row reveal">
-            <div class="stat"><b>7<span class="holo-txt">yrs</span></b><span>Experience</span></div>
-            <div class="stat"><b>20+ <span class="holo-txt">projects</span></b><span>Contributed</span></div>
-            <div class="stat"><b>2<span class="holo-txt">games</span></b><span>On Steam</span></div>
+            <div class="stat"><b>7</b><span class="sunit holo-txt">years</span><span class="slab">Experience</span></div>
+            <div class="stat"><b>20+</b><span class="sunit holo-txt">projects</span><span class="slab">Contributed</span></div>
+            <div class="stat"><b>2</b><span class="sunit holo-txt">games</span><span class="slab">On Steam</span></div>
           </div>
         </div>
       </div>
@@ -1001,7 +1003,7 @@ a.tale:hover{transform:translateY(-2px);border-color:var(--acc)}
             </div>
             <div class="badge r-rare reveal">
               <div class="bmark"><svg class="od-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13A4 4 0 0116 11"></path></svg></div>
-              <div><p class="btitle">Still Leveling</p><span class="bsub">BEng ICT · HUST · 2027</span></div>
+              <div><p class="btitle">Still Leveling</p><span class="bsub">BBA · PTIT · since 2026</span></div>
             </div>
           </div>
         </div>
@@ -1152,6 +1154,7 @@ a.tale:hover{transform:translateY(-2px);border-color:var(--acc)}
             <p class="lead">The teams I've fought alongside on projects.</p>
           </div>
           <div class="party">
+            <div class="member r-legendary reveal"><span class="mava" aria-hidden="true">PV</span><div><p class="mname">PEGATRON VIETNAM</p><span class="mrole">Hai Phong · 2026 – Now</span></div></div>
             <div class="member r-epic reveal"><span class="mava" aria-hidden="true">GD</span><div><p class="mname">GD Studio</p><span class="mrole">Remote team · 2023 – 2025</span></div></div>
             <div class="member r-rare reveal"><span class="mava" aria-hidden="true">HU</span><div><p class="mname">HUST Lab</p><span class="mrole">Hanoi · 2021 – 2023</span></div></div>
             <div class="member r-rare reveal"><span class="mava" aria-hidden="true">GI</span><div><p class="mname">Gear Inc.</p><span class="mrole">Hanoi · 2020 – 2021</span></div></div>
@@ -1182,7 +1185,7 @@ a.tale:hover{transform:translateY(-2px);border-color:var(--acc)}
               <p class="cmdline"><span class="pr">dkeiz@dev</span>:~$ cat ./story.txt</p>
               <p>I started on a Unity build pipeline at Gear Inc. in 2020, spent two years cleaning datasets and hunting bugs in a HUST lab, then went full game dev at GD Studio — gameplay systems, enemy AI and bullet-hell performance, through to level design and QA. Two of those games made it to Steam.</p>
               <p>I like systems that are simple but durable: code a teammate can read, maintain and not curse at. Good architecture is the kind a newcomer understands in ten minutes — not the kind that needs a wiki.</p>
-              <p>Meanwhile I'm chasing a BEng in ICT at HUST (expected 2027) and picked up a BBA in 2026 — because shipping games is half engineering, half everything else.</p>
+              <p>Meanwhile I've wrapped up my M.Eng. in ICT at HUST and picked up a BBA at PTIT in 2026 — because shipping games is half engineering, half everything else. These days I also consult on AI workflows at PEGATRON.</p>
               <p>Off the clock I keep studying — learning while shipping is how I level up fastest.</p>
               <p class="cmdline"><span class="pr">dkeiz@dev</span>:~$ status --current</p>
               <p><span class="ok">●</span> Open — ready for the next quest.</p>
@@ -1248,9 +1251,9 @@ a.tale:hover{transform:translateY(-2px);border-color:var(--acc)}
 <footer class="site-foot">
   <div class="wrap">
     <p class="foot-mark"><img class="brand-leaf foot-leaf" src="assets/logo.svg" alt="" aria-hidden="true" width="30" height="31">DKEIZ.DQ<span class="cur" aria-hidden="true"></span></p>
-    <p class="foot-quote">“Code is magic — and I have no plans to stop.”</p>
+    <p class="foot-quote">“Life is a game. Skip tutorial, fight the boss, rewrite the rules.”</p>
     <div class="foot-meta">
-      <span>© <span id="year">2026</span> Dkeiz Dương · Character Sheet</span>
+      <span>© <span id="year">2026</span> Đào Quang Dương · Character Sheet</span>
       <span><a href="#hero">Back to top ↑</a></span>
     </div>
   </div>
