@@ -203,7 +203,7 @@ h2.decode{
 .sheet{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,.85fr);gap:0 56px;align-items:start;width:100%}
 .sheet-top{grid-column:1;grid-row:1}
 .sheet-bot{grid-column:1;grid-row:2}
-.sheet-side{grid-column:2;grid-row:1;display:grid;width:100%}
+.sheet-side{grid-column:2;grid-row:1;display:grid;width:100%;margin-top:28px}
 
 .nameline{display:flex;align-items:center;gap:14px;margin:22px 0 0;flex-wrap:wrap}
 .chip{
@@ -413,7 +413,7 @@ h2.decode{
 .ts-title{font-family:var(--mono);font-weight:800;font-size:clamp(1.9rem,7vw,3.4rem);letter-spacing:-.04em;margin:14px 0 0;color:var(--ink)}
 .ts-title .holo-txt{display:block;font-size:.4em;font-weight:400;letter-spacing:.02em;margin-top:12px}
 .ts-menu{display:grid;gap:10px;margin:34px auto 0;max-width:280px}
-.ts-btn{font-family:var(--mono);font-size:13.5px;letter-spacing:.14em;text-transform:uppercase;padding:13px 18px;border:1px solid var(--line-2);border-radius:10px;color:var(--soft);background:rgba(239,233,221,.02);text-align:center;transition:color .2s ease,border-color .2s ease,box-shadow .2s ease,transform .2s ease}
+.ts-btn{font-family:var(--mono);font-size:13.5px;letter-spacing:.14em;text-transform:uppercase;padding:13px 18px;border:1px solid var(--line-2);border-radius:10px;color:var(--soft);background:rgba(239,233,221,.02);text-align:center;text-decoration:none;transition:color .2s ease,border-color .2s ease,box-shadow .2s ease,transform .2s ease}
 .ts-btn:hover{color:var(--ink);border-color:var(--rare);box-shadow:0 0 0 1px var(--rare),0 0 22px -6px var(--rare);transform:translateY(-1px)}
 .ts-btn.primary{color:var(--ink);border-color:transparent;background-image:linear-gradient(var(--bg),var(--bg)),var(--holo);background-origin:border-box;background-clip:padding-box,border-box}
 .ts-toast{font-family:var(--mono);font-size:12px;color:var(--legendary);margin:16px 0 0;min-height:1.2em;opacity:0;transition:opacity .3s}
@@ -498,7 +498,7 @@ a.tale:hover{transform:translateY(-2px);border-color:var(--acc)}
 
 /* ---------- BESTIARY ---------- */
 .beasts{display:grid}
-.beast{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:16px;align-items:baseline;padding:16px 4px;border-top:1px solid var(--line)}
+.beast{display:grid;grid-template-columns:78px minmax(0,1fr) auto;gap:16px;align-items:baseline;padding:16px 4px;border-top:1px solid var(--line)}
 .beast:first-child{border-top:0}
 .btag{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--hp);border:1px solid var(--hp);border-radius:999px;padding:3px 9px;white-space:nowrap}
 .beast h3{font-family:var(--mono);font-size:.98rem;margin:0;color:var(--ink)}
@@ -537,7 +537,7 @@ a.tale:hover{transform:translateY(-2px);border-color:var(--acc)}
 @media (max-width:640px){
   .maprail{display:none}
   .loot{grid-template-columns:1fr 1fr}
-  .beast{grid-template-columns:auto minmax(0,1fr)}
+  .beast{grid-template-columns:78px minmax(0,1fr)}
   .beast .bfix{grid-column:1 / -1}
 }
 
@@ -560,6 +560,7 @@ a.tale:hover{transform:translateY(-2px);border-color:var(--acc)}
 
   .sheet{grid-template-columns:1fr;gap:20px}
   .sheet-top,.sheet-bot,.sheet-side,.vitals{grid-column:auto;grid-row:auto}
+  .sheet-side{margin-top:0}
   .avatar-wrap{max-width:380px}
   .sec{padding-top:96px}
   .sec > .wrap > .in{grid-template-columns:1fr;gap:22px}
