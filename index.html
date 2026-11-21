@@ -2,14 +2,15 @@
 <html lang="en"><head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Dkeiz Dương — Character Sheet · Unity Game Dev · QA · Level Design</title>
-<meta name="description" content="Personal portfolio of Dkeiz Dương (Dao Quang Duong) — Unity game developer with 7 years of experience, presented as a character sheet from a role-playing game.">
+<title>Dkeiz Dương — Character Sheet · Unity Game Dev · Level Design · Automation</title>
+<meta name="description" content="Dkeiz Duong — Unity Game Developer, Level Designer and Automation Developer. Building gameplay systems, designing player experiences, and developing tools and workflows that improve efficiency.">
 <meta name="color-scheme" content="dark">
 <meta name="theme-color" content="#070606">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Dkeiz Dương — Character Sheet · Unity Game Dev · QA · Level Design">
-<meta property="og:description" content="Unity game developer presented as an RPG character sheet: gameplay systems, QA and level design. Two games on Steam.">
-<meta name="twitter:card" content="summary">
+<meta property="og:title" content="Dkeiz Dương — Character Sheet · Unity Game Dev · Level Design · Automation">
+<meta property="og:description" content="Unity Game Developer, Level Designer and Automation Developer. Building gameplay systems, designing player experiences, and developing tools and workflows that improve efficiency.">
+<meta property="og:image" content="assets/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="assets/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
@@ -151,6 +152,8 @@ h2.decode{
 .decode em{font-style:italic;font-weight:400;color:var(--muted);font-size:.92em}
 .lead{color:var(--soft);max-width:60ch;margin:20px 0 0;font-size:1.05rem}
 .hero-quote{font-family:var(--mono);font-style:italic;color:var(--muted);margin:18px 0 0;max-width:52ch;font-size:.98rem}
+.realname{font-family:var(--mono);font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:12px 0 0}
+.lead + .lead{margin-top:8px}
 .fine{font-family:var(--mono);font-size:13px;color:var(--faint);line-height:1.8;margin:44px 0 0}
 
 /* ---------- HUD FRAME (corner brackets) ---------- */
@@ -197,7 +200,10 @@ h2.decode{
 
 /* ---------- HERO / CHARACTER SHEET ---------- */
 .hero{min-height:100svh;display:flex;align-items:center;padding:150px 0 90px}
-.sheet{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,.85fr);gap:56px;align-items:center;width:100%}
+.sheet{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,.85fr);gap:0 56px;align-items:start;width:100%}
+.sheet-top{grid-column:1;grid-row:1}
+.sheet-bot{grid-column:1;grid-row:2}
+.sheet-side{grid-column:2;grid-row:1;display:grid;width:100%}
 
 .nameline{display:flex;align-items:center;gap:14px;margin:22px 0 0;flex-wrap:wrap}
 .chip{
@@ -208,7 +214,7 @@ h2.decode{
 }
 .chip .dot{inline-size:7px;block-size:7px;border-radius:50%;background:var(--acc,var(--rare));box-shadow:0 0 10px var(--acc,var(--rare))}
 
-.vitals{display:grid;gap:14px;margin:34px 0 0;max-width:520px}
+.vitals{grid-column:2;grid-row:2;display:grid;gap:14px;margin:20px 0 0;max-width:520px}
 .vital{display:grid;grid-template-columns:64px 1fr 52px;align-items:center;gap:14px}
 .vital .vlabel{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--muted)}
 .vital .vnum{font-family:var(--mono);font-size:13px;color:var(--soft);text-align:right}
@@ -500,7 +506,7 @@ a.tale:hover{transform:translateY(-2px);border-color:var(--acc)}
 .bfix{font-family:var(--mono);font-size:11px;color:var(--faint);white-space:nowrap}
 
 /* ---------- MERCHANT ---------- */
-.goods{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+.goods{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px}
 .good{--acc:var(--rare);border:1px solid var(--line);border-radius:14px;padding:18px;background:var(--panel);display:flex;flex-direction:column;gap:12px}
 .good .gname{font-family:var(--mono);font-weight:700;color:var(--ink);margin:0}
 .good ul{display:grid;gap:7px}
@@ -537,7 +543,7 @@ a.tale:hover{transform:translateY(-2px);border-color:var(--acc)}
 
 /* ---------- RESPONSIVE ---------- */
 @media (max-width:1024px){
-  .sheet{gap:40px}
+  .sheet{gap:0 40px}
 }
 @media (max-width:900px){
   .nav-links{
@@ -552,7 +558,8 @@ a.tale:hover{transform:translateY(-2px);border-color:var(--acc)}
   .nav-links a:hover{background:rgba(239,233,221,.06);color:var(--ink)}
   .nav-toggle{display:inline-flex}
 
-  .sheet{grid-template-columns:1fr;gap:40px}
+  .sheet{grid-template-columns:1fr;gap:20px}
+  .sheet-top,.sheet-bot,.sheet-side,.vitals{grid-column:auto;grid-row:auto}
   .avatar-wrap{max-width:380px}
   .sec{padding-top:96px}
   .sec > .wrap > .in{grid-template-columns:1fr;gap:22px}
@@ -589,11 +596,11 @@ a.tale:hover{transform:translateY(-2px);border-color:var(--acc)}
   <div class="ts-inner">
     <img class="ts-mark" src="assets/logo-holo.svg" alt="" aria-hidden="true" width="997" height="1031">
     <p class="ts-kicker">Dkeiz Dương</p>
-    <p class="ts-title" id="tsTitle">Character Sheet<span class="holo-txt">Unity Game Dev · QA · Level Design</span></p>
+    <p class="ts-title" id="tsTitle">Character Sheet<span class="holo-txt">Unity Game Dev · Level Design · Automation</span></p>
     <div class="ts-menu">
       <button class="ts-btn primary" type="button" data-start="new">New Game</button>
       <button class="ts-btn" type="button" data-start="continue">Continue</button>
-      <button class="ts-btn" type="button" data-start="load">Load Save</button>
+      <a class="ts-btn" href="duongdq.cv.pdf" download>View CV</a>
     </div>
     <p class="ts-toast" id="tsToast" role="status" aria-live="polite"></p>
     <p class="ts-hint">Press Esc to start</p>
@@ -612,7 +619,6 @@ a.tale:hover{transform:translateY(-2px);border-color:var(--acc)}
     <a class="map-node" href="#inventory" aria-label="Inventory"><span class="map-label">Inventory</span></a>
     <a class="map-node" href="#achievements" aria-label="Trophies"><span class="map-label">Trophies</span></a>
     <a class="map-node" href="#chronicle" aria-label="Chronicle"><span class="map-label">Chronicle</span></a>
-    <a class="map-node" href="#tavern" aria-label="Tavern"><span class="map-label">Tavern</span></a>
     <a class="map-node" href="#bestiary" aria-label="Bestiary"><span class="map-label">Bestiary</span></a>
     <a class="map-node" href="#merchant" aria-label="Merchant"><span class="map-label">Merchant</span></a>
     <a class="map-node" href="#guild" aria-label="Guild"><span class="map-label">Guild</span></a>
@@ -642,27 +648,54 @@ a.tale:hover{transform:translateY(-2px);border-color:var(--acc)}
   <section class="hero" id="hero">
     <div class="wrap">
       <div class="sheet">
-        <div class="sheet-id">
+        <div class="sheet-top">
           <p class="kicker">Character Sheet</p>
-          <h1 class="decode">Dkeiz Dương<br><em>Unity Game Dev · QA · Level Design</em></h1>
+          <h1 class="decode">Dkeiz Dương<br><em>Unity Game Dev · Level Design · Automation</em></h1>
+          <p class="realname">Đào Quang Dương · Hai Phong, Vietnam</p>
 
           <div class="nameline">
             <span class="chip r-legendary"><span class="dot" aria-hidden="true"></span>Class · Unity Game Dev</span>
-            <span class="chip r-epic"><span class="dot" aria-hidden="true"></span>Subclass · Gameplay Programmer</span>
-            <span class="chip r-rare"><span class="dot" aria-hidden="true"></span>Trait · QA &amp; Level Design</span>
-            <span class="chip"><span aria-hidden="true">✦</span>7 years of experience</span>
+            <span class="chip r-epic"><span class="dot" aria-hidden="true"></span>Subclass · Automation Engineer</span>
+            <span class="chip r-rare"><span class="dot" aria-hidden="true"></span>Trait · Level Design</span>
+            <span class="chip r-legendary"><span aria-hidden="true">✦</span>7 years · since 2019</span>
           </div>
 
           <div class="nameline" style="margin-top:12px">
-            <span class="chip">Race · Hải Phòng</span>
-            <span class="chip">Alignment · Chaotic Good</span>
-            <span class="chip">Guild · Student</span>
+            <span class="chip r-rare"><span class="dot" aria-hidden="true"></span>Race · Hai Phong</span>
+            <span class="chip r-legendary"><span class="dot" aria-hidden="true"></span>Guild · PEGATRON</span>
+            <span class="chip"><span aria-hidden="true">✦</span>M.Eng. ICT · HUST</span>
+            <span class="chip"><span aria-hidden="true">✦</span>BBA · PTIT · since 2026</span>
           </div>
+        </div>
 
-          <p class="lead"><span data-typewriter>Seven years in games: Unity gameplay systems, enemy AI, and the performance work. Two games on Steam, 20+ projects in the log. M.Eng. in ICT at HUST — now studying a BBA at PTIT and working as an AI workflow consultant at PEGATRON.</span><span class="type-caret" aria-hidden="true"></span></p>
-          <p class="hero-quote">"To play before the player play, and win after the players win."</p>
+        <div class="sheet-bot">
+          <p class="lead"><span data-typewriter>I build gameplay systems, design engaging levels, and develop automation tools that improve workflows and reduce repetitive tasks.</span><span class="type-caret" aria-hidden="true"></span></p>
+          <p class="lead">From Unity game development to full-stack applications and AI-powered workflows, I enjoy turning complex problems into practical, reliable solutions.</p>
+          <p class="hero-quote">"play before the play, and win after the win"</p>
 
-          <div class="vitals" role="group" aria-label="Character vital stats">
+          <div class="cta">
+            <a class="btn" href="#attributes">
+              <span>View profile</span>
+              <svg class="od-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="--od-icon-size:16px"><path d="M12 5v14M5 12l7 7 7-7"></path></svg>
+            </a>
+            <a class="link-quiet" href="duongdq.cv.pdf" download>Download CV (PDF)</a>
+            <a class="link-quiet" href="https://github.com/Duong-DQ" target="_blank" rel="noopener">GitHub ↗</a>
+          </div>
+        </div>
+
+        <div class="sheet-side">
+        <div class="avatar-wrap hud">
+          <span class="lvl-badge">LV <b>27</b></span>
+          <div class="avatar-svg avatar-mark" role="img" aria-label="Holographic logo of Dkeiz Dương">
+            <img class="avatar-logo" src="assets/logo-holo.svg" alt="" aria-hidden="true" width="997" height="1031">
+            <span class="avatar-scan" aria-hidden="true"></span>
+            <span class="avatar-id" aria-hidden="true">ID-Y2K1</span>
+          </div>
+          <div class="avatar-tag"><span>Dkeiz.Dương</span><span>Lv.27 · Dev</span></div>
+        </div>
+        </div>
+
+        <div class="vitals" role="group" aria-label="Character vital stats">
             <div class="vital">
               <span class="vlabel">XP</span>
               <span class="bar xp"><i class="fill" data-p="82" role="progressbar" aria-label="Experience" aria-valuenow="82" aria-valuemin="0" aria-valuemax="100"></i></span>
@@ -679,26 +712,6 @@ a.tale:hover{transform:translateY(-2px);border-color:var(--acc)}
               <span class="vnum">76<small>/100</small></span>
             </div>
           </div>
-
-          <div class="cta">
-            <a class="btn" href="#attributes">
-              <span>View profile</span>
-              <svg class="od-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="--od-icon-size:16px"><path d="M12 5v14M5 12l7 7 7-7"></path></svg>
-            </a>
-            <a class="link-quiet" href="duongdq.cv.pdf" download>Download CV (PDF)</a>
-            <a class="link-quiet" href="https://github.com/Duong-DQ" target="_blank" rel="noopener">GitHub ↗</a>
-          </div>
-        </div>
-
-        <div class="avatar-wrap hud">
-          <span class="lvl-badge">LV <b>27</b></span>
-          <div class="avatar-svg avatar-mark" role="img" aria-label="Holographic logo of Dkeiz Dương">
-            <img class="avatar-logo" src="assets/logo-holo.svg" alt="" aria-hidden="true" width="997" height="1031">
-            <span class="avatar-scan" aria-hidden="true"></span>
-            <span class="avatar-id" aria-hidden="true">ID-Y2K1</span>
-          </div>
-          <div class="avatar-tag"><span>Dkeiz.Dương</span><span>Lv.27 · Dev</span></div>
-        </div>
       </div>
     </div>
   </section>
@@ -716,39 +729,29 @@ a.tale:hover{transform:translateY(-2px);border-color:var(--acc)}
 
           <div class="attrs">
             <div class="attr r-legendary reveal">
-              <span class="aname">Unity Engine <em>· UNY</em></span>
+              <span class="aname">Gameplay <em>· GLY — Unity, C#, systems</em></span>
               <span class="aval">92</span>
-              <span class="bar"><i class="fill" data-p="92" role="progressbar" aria-label="Unity engine" aria-valuenow="92" aria-valuemin="0" aria-valuemax="100"></i></span>
+              <span class="bar"><i class="fill" data-p="92" role="progressbar" aria-label="Gameplay" aria-valuenow="92" aria-valuemin="0" aria-valuemax="100"></i></span>
             </div>
             <div class="attr r-legendary reveal">
-              <span class="aname">C# Programming <em>· CSH</em></span>
-              <span class="aval">90</span>
-              <span class="bar"><i class="fill" data-p="90" role="progressbar" aria-label="C# programming" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></i></span>
-            </div>
-            <div class="attr r-legendary reveal">
-              <span class="aname">Gameplay Systems <em>· GAME</em></span>
-              <span class="aval">88</span>
-              <span class="bar"><i class="fill" data-p="88" role="progressbar" aria-label="Gameplay systems" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100"></i></span>
+              <span class="aname">Automation <em>· AUT — workflows, data</em></span>
+              <span class="aval">86</span>
+              <span class="bar"><i class="fill" data-p="86" role="progressbar" aria-label="Automation" aria-valuenow="86" aria-valuemin="0" aria-valuemax="100"></i></span>
             </div>
             <div class="attr r-epic reveal">
-              <span class="aname">QA / Testing <em>· QA</em></span>
-              <span class="aval">82</span>
-              <span class="bar"><i class="fill" data-p="82" role="progressbar" aria-label="QA and testing" aria-valuenow="82" aria-valuemin="0" aria-valuemax="100"></i></span>
+              <span class="aname">Design <em>· DSN — levels, flow, difficulty</em></span>
+              <span class="aval">84</span>
+              <span class="bar"><i class="fill" data-p="84" role="progressbar" aria-label="Design" aria-valuenow="84" aria-valuemin="0" aria-valuemax="100"></i></span>
             </div>
             <div class="attr r-epic reveal">
-              <span class="aname">Communication / Teamwork <em>· CHA</em></span>
-              <span class="aval">76</span>
-              <span class="bar"><i class="fill" data-p="76" role="progressbar" aria-label="Communication and teamwork" aria-valuenow="76" aria-valuemin="0" aria-valuemax="100"></i></span>
+              <span class="aname">Development <em>· DEV — full-stack web</em></span>
+              <span class="aval">80</span>
+              <span class="bar"><i class="fill" data-p="80" role="progressbar" aria-label="Development" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></i></span>
             </div>
-            <div class="attr r-rare reveal">
-              <span class="aname">Level Design <em>· LEVEL</em></span>
+            <div class="attr r-epic reveal">
+              <span class="aname">AI <em>· AI — assisted workflows, integration</em></span>
               <span class="aval">74</span>
-              <span class="bar"><i class="fill" data-p="74" role="progressbar" aria-label="Level design" aria-valuenow="74" aria-valuemin="0" aria-valuemax="100"></i></span>
-            </div>
-            <div class="attr r-rare reveal">
-              <span class="aname">Data Analysis <em>· DATA</em></span>
-              <span class="aval">70</span>
-              <span class="bar"><i class="fill" data-p="70" role="progressbar" aria-label="Data analysis" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></i></span>
+              <span class="bar"><i class="fill" data-p="74" role="progressbar" aria-label="AI" aria-valuenow="74" aria-valuemin="0" aria-valuemax="100"></i></span>
             </div>
           </div>
 
@@ -774,46 +777,48 @@ a.tale:hover{transform:translateY(-2px);border-color:var(--acc)}
           </div>
 
           <div class="tree">
-            <div class="branch r-rare reveal">
-              <div class="bhead">
-                <span class="bmark2"><svg class="od-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"></circle><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"></path></svg></span>
-                <div><p class="bname">Artificer</p><span class="bdesc">Programming</span></div>
-              </div>
-              <ul class="nodes">
-                <li class="node" tabindex="0" data-tip="C# — OOP, component-based, events. Rank 5/5."><span class="nname">C#</span><span class="pips" role="img" aria-label="5 out of 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></li>
-                <li class="node" tabindex="0" data-tip="SQL — data queries for analysis. Rank 3/5."><span class="nname">SQL</span><span class="pips" role="img" aria-label="3 out of 5"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span></li>
-                <li class="node" tabindex="0" data-tip="GitHub — version control in every project. Rank 4/5."><span class="nname">GitHub</span><span class="pips" role="img" aria-label="4 out of 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span></li>
-                <li class="node" tabindex="0" data-tip="Debugging — reading errors and fixing fast. Rank 4/5."><span class="nname">Debugging</span><span class="pips" role="img" aria-label="4 out of 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span></li>
-                <li class="node" tabindex="0" data-tip="Unity Profiling — finding the real bottlenecks. Rank 4/5."><span class="nname">Unity Profiling</span><span class="pips" role="img" aria-label="4 out of 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span></li>
-              </ul>
-            </div>
-
             <div class="branch r-epic reveal">
               <div class="bhead">
                 <span class="bmark2"><svg class="od-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="6" width="20" height="12" rx="6"></rect><path d="M6 12h4M8 10v4"></path><circle cx="16" cy="11" r="1"></circle><circle cx="18" cy="13" r="1"></circle></svg></span>
                 <div><p class="bname">Engineer</p><span class="bdesc">Game dev</span></div>
               </div>
               <ul class="nodes">
-                <li class="node" tabindex="0" data-tip="Unity — 2D &amp; 2.5D, animation and URP. Rank 5/5."><span class="nname">Unity</span><span class="pips" role="img" aria-label="5 out of 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></li>
-                <li class="node" tabindex="0" data-tip="Figma — UI design. Rank 3/5."><span class="nname">Figma</span><span class="pips" role="img" aria-label="3 out of 5"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span></li>
-                <li class="node" tabindex="0" data-tip="Photoshop — 2D art and sprites. Rank 2/5."><span class="nname">Photoshop</span><span class="pips" role="img" aria-label="2 out of 5"><i class="on"></i><i class="on"></i><i></i><i></i><i></i></span></li>
-                <li class="node" tabindex="0" data-tip="Jira / Trello — sprints and task tracking. Rank 4/5."><span class="nname">Jira / Trello</span><span class="pips" role="img" aria-label="4 out of 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span></li>
-                <li class="node locked" tabindex="0" data-tip="Multiplayer netcode — locked until 5 shipped games."><span class="nname">Multiplayer Netcode</span><span class="pips" role="img" aria-label="Locked"><i></i><i></i><i></i><i></i><i></i></span></li>
-                <li class="node locked" tabindex="0" data-tip="Shader Programming — locked until 10 shipped games."><span class="nname">Shader Programming</span><span class="pips" role="img" aria-label="Locked"><i></i><i></i><i></i><i></i><i></i></span></li>
+                <li class="node" tabindex="0" data-tip="Unity — 2D &amp; 2.5D, gameplay and animation. Rank 5/5."><span class="nname">Unity</span><span class="pips" role="img" aria-label="5 out of 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></li>
+                <li class="node" tabindex="0" data-tip="C# — OOP, component-based, events. Rank 5/5."><span class="nname">C#</span><span class="pips" role="img" aria-label="5 out of 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></li>
+                <li class="node" tabindex="0" data-tip="Gameplay Programming — combat, enemy AI, performance. Rank 5/5."><span class="nname">Gameplay Programming</span><span class="pips" role="img" aria-label="5 out of 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></li>
+                <li class="node" tabindex="0" data-tip="Debugging — reading errors and fixing fast. Rank 4/5."><span class="nname">Debugging</span><span class="pips" role="img" aria-label="4 out of 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span></li>
+                <li class="node" tabindex="0" data-tip="Unity Profiling — finding the real bottlenecks. Rank 4/5."><span class="nname">Unity Profiling</span><span class="pips" role="img" aria-label="4 out of 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span></li>
+                <li class="node locked" tabindex="0" data-tip="Multiplayer Netcode — locked until 5 shipped games."><span class="nname">Multiplayer Netcode</span><span class="pips" role="img" aria-label="Locked"><i></i><i></i><i></i><i></i><i></i></span></li>
               </ul>
             </div>
 
             <div class="branch r-legendary reveal">
               <div class="bhead">
                 <span class="bmark2"><svg class="od-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M15 9l-2 5-5 2 2-5z"></path></svg></span>
-                <div><p class="bname">Architect</p><span class="bdesc">Game design</span></div>
+                <div><p class="bname">Architect</p><span class="bdesc">Level design</span></div>
               </div>
               <ul class="nodes">
-                <li class="node" tabindex="0" data-tip="Systems Design — rules that create play. Rank 4/5."><span class="nname">Systems Design</span><span class="pips" role="img" aria-label="4 out of 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span></li>
-                <li class="node" tabindex="0" data-tip="Level Design — pacing, layout and teaching. Rank 3/5."><span class="nname">Level Design</span><span class="pips" role="img" aria-label="3 out of 5"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span></li>
+                <li class="node" tabindex="0" data-tip="Level Design — pacing, layout and teaching. Rank 4/5."><span class="nname">Level Design</span><span class="pips" role="img" aria-label="4 out of 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span></li>
                 <li class="node" tabindex="0" data-tip="Difficulty Balancing — damage and difficulty curves. Rank 4/5."><span class="nname">Difficulty Balancing</span><span class="pips" role="img" aria-label="4 out of 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span></li>
+                <li class="node" tabindex="0" data-tip="Systems Design — rules that create play. Rank 4/5."><span class="nname">Systems Design</span><span class="pips" role="img" aria-label="4 out of 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span></li>
+                <li class="node" tabindex="0" data-tip="Player Flow &amp; Pacing — directing attention and tension. Rank 3/5."><span class="nname">Player Flow &amp; Pacing</span><span class="pips" role="img" aria-label="3 out of 5"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span></li>
                 <li class="node" tabindex="0" data-tip="Playtesting — watching real players. Rank 3/5."><span class="nname">Playtesting</span><span class="pips" role="img" aria-label="3 out of 5"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span></li>
                 <li class="node locked" tabindex="0" data-tip="Narrative Design — locked until the next story-heavy project."><span class="nname">Narrative Design</span><span class="pips" role="img" aria-label="Locked"><i></i><i></i><i></i><i></i><i></i></span></li>
+              </ul>
+            </div>
+
+            <div class="branch r-rare reveal">
+              <div class="bhead">
+                <span class="bmark2"><svg class="od-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"></circle><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"></path></svg></span>
+                <div><p class="bname">Artificer</p><span class="bdesc">Automation</span></div>
+              </div>
+              <ul class="nodes">
+                <li class="node" tabindex="0" data-tip="Workflow Automation — scripts and pipelines that remove repetitive work. Rank 4/5."><span class="nname">Workflow Automation</span><span class="pips" role="img" aria-label="4 out of 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span></li>
+                <li class="node" tabindex="0" data-tip="Full-Stack Web Dev — internal tools, dashboards, data systems. Rank 4/5."><span class="nname">Full-Stack Web Dev</span><span class="pips" role="img" aria-label="4 out of 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span></li>
+                <li class="node" tabindex="0" data-tip="Data Validation &amp; Processing — checks, reconciliation, import workflows. Rank 4/5."><span class="nname">Data Validation &amp; Processing</span><span class="pips" role="img" aria-label="4 out of 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span></li>
+                <li class="node" tabindex="0" data-tip="SQL / SQLite — queries, schema design, data management. Rank 4/5."><span class="nname">SQL / SQLite</span><span class="pips" role="img" aria-label="4 out of 5"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span></li>
+                <li class="node" tabindex="0" data-tip="AI Integration — AI-assisted workflows and practical automation. Rank 3/5."><span class="nname">AI Integration</span><span class="pips" role="img" aria-label="3 out of 5"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span></li>
+                <li class="node locked" tabindex="0" data-tip="Agent Orchestration — locked until the first multi-agent system ships."><span class="nname">Agent Orchestration</span><span class="pips" role="img" aria-label="Locked"><i></i><i></i><i></i><i></i><i></i></span></li>
               </ul>
             </div>
           </div>
@@ -829,11 +834,43 @@ a.tale:hover{transform:translateY(-2px);border-color:var(--acc)}
         <p class="sh"><span class="no">03</span>Quests<span class="holo-dot" aria-hidden="true"></span></p>
         <div>
           <div class="sec-head reveal">
-            <h2 class="decode">Quest Log<br><em>Completed quests</em></h2>
+            <h2 class="decode">Quest Log<br><em>Active &amp; completed quests</em></h2>
             <p class="lead">Each project is a quest. Rarity reflects the real difficulty and scale.</p>
           </div>
 
           <div class="quests">
+            <article class="quest r-epic reveal"
+              data-title="C&amp;B Data Monitoring &amp; Version Control" data-diff="Difficulty ★★★★☆" data-link=""
+              data-tech="TypeScript,Next.js,SQL,Version Control"
+              data-loot="Role:Full-Stack Developer|Status:In Development|Team:PEGATRON Vietnam|Focus:Automation"
+              data-body="A data management system designed to improve the reliability and traceability of employee C&amp;B information: version control for C&amp;B data; working sheets and data reconciliation; conflict resolution before merging changes; data history, audit trail and rollback; import workflows for HRIS and employee data. PEGATRON Vietnam, Hai Phong, since 2026.">
+              <span class="qmark" aria-hidden="true">Epic</span>
+              <div>
+                <span class="qtype">Main Quest</span>
+                <h3>C&amp;B Data Monitoring &amp; Version Control</h3>
+                <p>Full-stack data management with version control, reconciliation and audit trails for employee C&amp;B information.</p>
+                <div class="qtags"><span class="qtag">TypeScript</span><span class="qtag">Next.js</span><span class="qtag">SQL</span><span class="qtag">Version Control</span></div>
+                <button class="qmore" type="button">View quest details →</button>
+              </div>
+              <span class="qstatus"><span class="dot" aria-hidden="true"></span>In Development</span>
+            </article>
+
+            <article class="quest r-epic reveal"
+              data-title="C&amp;B Employee Onboarding System" data-diff="Difficulty ★★★☆☆" data-link=""
+              data-tech="TypeScript,Next.js,Workflow Automation"
+              data-loot="Role:Full-Stack Developer|Status:In Development|Team:PEGATRON Vietnam|Focus:Workflow Automation"
+              data-body="A workflow system for collecting and managing employee C&amp;B information during onboarding: employee information collection; data import and validation; C&amp;B information tracking; error detection and correction workflow; reduced repetitive manual data handling. PEGATRON Vietnam, Hai Phong, since 2026.">
+              <span class="qmark" aria-hidden="true">Epic</span>
+              <div>
+                <span class="qtype">Main Quest</span>
+                <h3>C&amp;B Employee Onboarding System</h3>
+                <p>Workflow system for collecting, validating and tracking employee C&amp;B information during onboarding.</p>
+                <div class="qtags"><span class="qtag">TypeScript</span><span class="qtag">Next.js</span><span class="qtag">Workflow Automation</span></div>
+                <button class="qmore" type="button">View quest details →</button>
+              </div>
+              <span class="qstatus"><span class="dot" aria-hidden="true"></span>In Development</span>
+            </article>
+
             <article class="quest r-epic reveal"
               data-title="Curtain Call" data-diff="Difficulty ★★★★☆" data-link="https://store.steampowered.com/app/2812610/_Curtain_Call/"
               data-tech="Unity,Level Design,QA"
@@ -910,8 +947,8 @@ a.tale:hover{transform:translateY(-2px);border-color:var(--acc)}
         <p class="sh"><span class="no">04</span>Inventory<span class="holo-dot" aria-hidden="true"></span></p>
         <div>
           <div class="sec-head reveal">
-            <h2 class="decode">Inventory<br><em>Everyday gear</em></h2>
-            <p class="lead">The gear I carry into every project.</p>
+            <h2 class="decode">Inventory<br><em>The tech stack</em></h2>
+            <p class="lead">The tools behind the games and the systems — the stack I reach for in current projects.</p>
           </div>
 
           <div class="inv">
@@ -923,21 +960,29 @@ a.tale:hover{transform:translateY(-2px);border-color:var(--acc)}
               <div class="iglyph"><svg class="od-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 8L7 16M15 8l-2 8M4 12h16"></path></svg></div>
               <p class="iname">C#</p><span class="irar">Legendary</span>
             </div>
+            <div class="item r-epic reveal" style="--th:#E879F9">
+              <div class="iglyph"><svg class="od-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 6l-5 6 5 6M16 6l5 6-5 6"></path></svg></div>
+              <p class="iname">TypeScript / JavaScript</p><span class="irar">Epic</span>
+            </div>
+            <div class="item r-epic reveal" style="--th:#31A8F4">
+              <div class="iglyph"><svg class="od-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="1.5"></circle><ellipse cx="12" cy="12" rx="9" ry="4"></ellipse><ellipse cx="12" cy="12" rx="9" ry="4" transform="rotate(60 12 12)"></ellipse><ellipse cx="12" cy="12" rx="9" ry="4" transform="rotate(120 12 12)"></ellipse></svg></div>
+              <p class="iname">Next.js / React</p><span class="irar">Epic</span>
+            </div>
             <div class="item r-epic reveal" style="--th:#2FBFAD">
               <div class="iglyph"><svg class="od-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="6" rx="8" ry="3"></ellipse><path d="M4 6v12c0 1.7 3.6 3 8 3s8-1.3 8-3V6M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"></path></svg></div>
-              <p class="iname">SQL</p><span class="irar">Epic</span>
+              <p class="iname">SQL / SQLite</p><span class="irar">Epic</span>
             </div>
             <div class="item r-epic reveal" style="--th:#F05033">
               <div class="iglyph"><svg class="od-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3v12a3 3 0 003 3h6"></path><circle cx="18" cy="18" r="3"></circle><circle cx="6" cy="18" r="3"></circle></svg></div>
               <p class="iname">Git / GitHub</p><span class="irar">Epic</span>
             </div>
-            <div class="item r-epic reveal" style="--th:#A259FF">
-              <div class="iglyph"><svg class="od-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="3"></rect><path d="M9 4v16M4 9h5"></path></svg></div>
-              <p class="iname">Figma</p><span class="irar">Epic</span>
+            <div class="item r-epic reveal" style="--th:#FFC53D">
+              <div class="iglyph"><svg class="od-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"></circle><path d="M12 3v3M12 18v3M3 12h3M18 12h3M6 6l2 2M16 16l2 2M18 6l-2 2M8 16l-2 2"></path></svg></div>
+              <p class="iname">Automation Tools</p><span class="irar">Epic</span>
             </div>
-            <div class="item r-rare reveal" style="--th:#31A8F4">
-              <div class="iglyph"><svg class="od-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l8 4.5v9L12 20l-8-4.5v-9z"></path><path d="M12 2v9M4 6.5l8 4.5 8-4.5"></path></svg></div>
-              <p class="iname">Photoshop</p><span class="irar">Rare</span>
+            <div class="item r-rare reveal" style="--th:#B49CFF">
+              <div class="iglyph"><svg class="od-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"></path></svg></div>
+              <p class="iname">AI Tools / APIs</p><span class="irar">Rare</span>
             </div>
             <div class="item r-rare reveal" style="--th:#2684FF">
               <div class="iglyph"><svg class="od-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M4 12h10M4 17h7"></path></svg></div>
@@ -954,14 +999,6 @@ a.tale:hover{transform:translateY(-2px);border-color:var(--acc)}
             <div class="item r-rare reveal" style="--th:#FF5C5C">
               <div class="iglyph"><svg class="od-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7l8-4 8 4-8 4z"></path><path d="M4 7v10l8 4 8-4V7"></path></svg></div>
               <p class="iname">Debugging</p><span class="irar">Rare</span>
-            </div>
-            <div class="item r-rare reveal" style="--th:#FFC53D">
-              <div class="iglyph"><svg class="od-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2v20M2 12h20M5 5l14 14M19 5L5 19"></path></svg></div>
-              <p class="iname">Agile / Scrum</p><span class="irar">Rare</span>
-            </div>
-            <div class="item r-rare reveal" style="--th:#E879F9">
-              <div class="iglyph"><svg class="od-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"></circle><path d="M12 3v3M12 18v3M3 12h3M18 12h3M6 6l2 2M16 16l2 2M18 6l-2 2M8 16l-2 2"></path></svg></div>
-              <p class="iname">URP</p><span class="irar">Rare</span>
             </div>
           </div>
         </div>
@@ -993,6 +1030,14 @@ a.tale:hover{transform:translateY(-2px);border-color:var(--acc)}
               <div class="bmark"><svg class="od-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="6" width="20" height="12" rx="6"></rect><path d="M6 12h4M8 10v4"></path><circle cx="16" cy="11" r="1"></circle><circle cx="18" cy="13" r="1"></circle></svg></div>
               <div><p class="btitle">Two Studio Games</p><span class="bsub">GD Studio · 2023 – 2025</span></div>
             </div>
+            <div class="badge r-epic reveal">
+              <div class="bmark"><svg class="od-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="6" rx="8" ry="3"></ellipse><path d="M4 6v12c0 1.7 3.6 3 8 3s8-1.3 8-3V6M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"></path></svg></div>
+              <div><p class="btitle">C&amp;B Data Monitoring System</p><span class="bsub">PEGATRON Vietnam · 2026</span></div>
+            </div>
+            <div class="badge r-epic reveal">
+              <div class="bmark"><svg class="od-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="2"></rect><path d="M8 8h8M8 12h8M8 16h5"></path></svg></div>
+              <div><p class="btitle">C&amp;B Onboarding Workflow</p><span class="bsub">PEGATRON Vietnam · 2026</span></div>
+            </div>
             <div class="badge r-rare reveal">
               <div class="bmark"><svg class="od-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17l6-6 4 4 8-8"></path><path d="M14 7h7v7"></path></svg></div>
               <div><p class="btitle">QA Veteran</p><span class="bsub">2+ years of testing</span></div>
@@ -1000,10 +1045,6 @@ a.tale:hover{transform:translateY(-2px);border-color:var(--acc)}
             <div class="badge r-rare reveal">
               <div class="bmark"><svg class="od-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18M5 21V7l7-5 7 5v14"></path><path d="M9 21v-6h6v6"></path></svg></div>
               <div><p class="btitle">Internship Complete</p><span class="bsub">Gear Inc. · 2020 – 2021</span></div>
-            </div>
-            <div class="badge r-rare reveal">
-              <div class="bmark"><svg class="od-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13A4 4 0 0116 11"></path></svg></div>
-              <div><p class="btitle">Still Leveling</p><span class="bsub">BBA · PTIT · since 2026</span></div>
             </div>
           </div>
         </div>
@@ -1022,6 +1063,12 @@ a.tale:hover{transform:translateY(-2px);border-color:var(--acc)}
             <p class="lead">Each chapter is a period — where I learned the most, including from failures.</p>
           </div>
           <div class="chronicle">
+            <div class="chapter r-legendary reveal">
+              <span class="cyears">2026 — Now</span>
+              <h3>Chapter V · The Automation Age</h3>
+              <span class="crole">Automation · AI Workflow · PEGATRON Vietnam</span>
+              <p>At PEGATRON Vietnam in Hai Phong — building the C&amp;B Data Monitoring &amp; Version Control System and the C&amp;B Onboarding System: full-stack tools that add version control, validation and audit trails to business data, and cut repetitive manual work.</p>
+            </div>
             <div class="chapter r-rare reveal">
               <span class="cyears">2024 — 2025</span>
               <h3>Chapter IV · Curtain Call</h3>
@@ -1046,27 +1093,11 @@ a.tale:hover{transform:translateY(-2px);border-color:var(--acc)}
               <span class="crole">Game Client Engineer Intern · Gear Inc.</span>
               <p>First internship: Unity build pipeline support, Agile with Git on Kingdom Raids.</p>
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== 07 TAVERN ===== -->
-  <section class="sec" id="tavern">
-    <div class="wrap">
-      <div class="in">
-        <p class="sh"><span class="no">07</span>Tavern<span class="holo-dot" aria-hidden="true"></span></p>
-        <div>
-          <div class="sec-head reveal">
-            <h2 class="decode">Tavern<br><em>Coming soon</em></h2>
-            <p class="lead">A corner for the devlog — notes on gameplay, QA and level design. No posts yet, but they're coming.</p>
-          </div>
-          <div class="tales">
-            <div class="tale r-epic reveal">
-              <span class="tmeta">Devlog · Coming soon</span>
-              <h3>Game-making notes</h3>
-              <p>No posts yet — a devlog on gameplay, QA and level design is on the way.</p>
+            <div class="chapter r-common reveal">
+              <span class="cyears">2019</span>
+              <h3>Prologue · Origin</h3>
+              <span class="crole">Self-taught · Unity &amp; C#</span>
+              <p>The year I started learning game development — where the seven years begin.</p>
             </div>
           </div>
         </div>
@@ -1074,11 +1105,11 @@ a.tale:hover{transform:translateY(-2px);border-color:var(--acc)}
     </div>
   </section>
 
-  <!-- ===== 08 BESTIARY ===== -->
+  <!-- ===== 07 BESTIARY ===== -->
   <section class="sec" id="bestiary">
     <div class="wrap">
       <div class="in">
-        <p class="sh"><span class="no">08</span>Bestiary<span class="holo-dot" aria-hidden="true"></span></p>
+        <p class="sh"><span class="no">07</span>Bestiary<span class="holo-dot" aria-hidden="true"></span></p>
         <div>
           <div class="sec-head reveal">
             <h2 class="decode">Bestiary<br><em>Bugs slain</em></h2>
@@ -1087,22 +1118,22 @@ a.tale:hover{transform:translateY(-2px);border-color:var(--acc)}
           <div class="beasts">
             <div class="beast reveal">
               <span class="btag">Critical</span>
-              <div><h3>Game-breaking bugs</h3><p>Bugs that make the game unplayable — top priority in every QA session.</p></div>
+              <div><h3>Game-breaking bugs</h3><p>Bugs that make the game unplayable — an undodgeable boss attack, a soft-lock that traps a player mid-run. Top priority in every QA session.</p></div>
               <span class="bfix">reproduce &amp; block</span>
             </div>
             <div class="beast reveal">
               <span class="btag">High</span>
-              <div><h3>Balance bugs</h3><p>Damage and difficulty drifting from the design — caught in playtests.</p></div>
+              <div><h3>Balance bugs</h3><p>Damage and difficulty drifting from the design — a boss hitting twice as hard as intended, a bullet pattern too dense to survive. Caught in playtests.</p></div>
               <span class="bfix">balance pass</span>
             </div>
             <div class="beast reveal">
               <span class="btag">Medium</span>
-              <div><h3>Progression bugs</h3><p>Progression and meta bugs — tracked in Jira, re-verified on every build.</p></div>
+              <div><h3>Progression bugs</h3><p>Progression and meta bugs — an upgrade that never drops, a currency that doesn't save, a run that resets. Tracked in Jira, re-verified on every build.</p></div>
               <span class="bfix">verify on new build</span>
             </div>
             <div class="beast reveal">
               <span class="btag">Low</span>
-              <div><h3>UI &amp; UX nits</h3><p>Small interface and UX nits — still fully logged, because players feel every detail.</p></div>
+              <div><h3>UI &amp; UX nits</h3><p>Small interface and UX nits — a tooltip overlapping a button, a label that truncates mid-word. Still fully logged, because players feel every detail.</p></div>
               <span class="bfix">log &amp; polish</span>
             </div>
           </div>
@@ -1111,30 +1142,40 @@ a.tale:hover{transform:translateY(-2px);border-color:var(--acc)}
     </div>
   </section>
 
-  <!-- ===== 09 MERCHANT ===== -->
+  <!-- ===== 08 MERCHANT ===== -->
   <section class="sec" id="merchant">
     <div class="wrap">
       <div class="in">
-        <p class="sh"><span class="no">09</span>Merchant<span class="holo-dot" aria-hidden="true"></span></p>
+        <p class="sh"><span class="no">08</span>Merchant<span class="holo-dot" aria-hidden="true"></span></p>
         <div>
           <div class="sec-head reveal">
             <h2 class="decode">Merchant<br><em>Services on offer</em></h2>
-            <p class="lead">What I can take on — no price list, just reach out to discuss specifics.</p>
+            <p class="lead">What I can take on — available for suitable projects and collaborations. No price list, just reach out to discuss specifics.</p>
           </div>
           <div class="goods">
+            <div class="good r-legendary reveal">
+              <p class="gname">Unity Game Development</p>
+              <ul><li>Gameplay systems &amp; enemy AI</li><li>Gameplay prototyping</li><li>Performance optimisation</li></ul>
+              <span class="gprice">On request</span>
+            </div>
             <div class="good r-epic reveal">
-              <p class="gname">Game Development</p>
-              <ul><li>Gameplay systems &amp; AI</li><li>Optimisation for dense scenes</li><li>Roguelike systems</li></ul>
+              <p class="gname">Level Design</p>
+              <ul><li>Level layout &amp; refinement</li><li>Gameplay flow &amp; difficulty progression</li><li>Player experience review</li></ul>
+              <span class="gprice">On request</span>
+            </div>
+            <div class="good r-epic reveal">
+              <p class="gname">Automation</p>
+              <ul><li>Workflow automation</li><li>Data processing &amp; validation</li><li>Repetitive task reduction</li></ul>
+              <span class="gprice">On request</span>
+            </div>
+            <div class="good r-epic reveal">
+              <p class="gname">Full-Stack Web Apps</p>
+              <ul><li>Web applications &amp; internal tools</li><li>Dashboards</li><li>Data management systems</li></ul>
               <span class="gprice">On request</span>
             </div>
             <div class="good r-rare reveal">
-              <p class="gname">QA &amp; Testing</p>
-              <ul><li>Gameplay, feature &amp; content testing</li><li>Bug reporting &amp; tracking</li><li>Difficulty &amp; UX feedback</li></ul>
-              <span class="gprice">On request</span>
-            </div>
-            <div class="good r-legendary reveal">
-              <p class="gname">Level Design</p>
-              <ul><li>Level design &amp; refinement</li><li>Difficulty &amp; progression</li><li>Accessibility &amp; UX review</li></ul>
+              <p class="gname">AI Solutions</p>
+              <ul><li>AI-assisted workflows</li><li>AI integration</li><li>Practical automation solutions</li></ul>
               <span class="gprice">On request</span>
             </div>
           </div>
@@ -1143,18 +1184,18 @@ a.tale:hover{transform:translateY(-2px);border-color:var(--acc)}
     </div>
   </section>
 
-  <!-- ===== 10 GUILD ===== -->
+  <!-- ===== 09 GUILD ===== -->
   <section class="sec" id="guild">
     <div class="wrap">
       <div class="in">
-        <p class="sh"><span class="no">10</span>Guild<span class="holo-dot" aria-hidden="true"></span></p>
+        <p class="sh"><span class="no">09</span>Guild<span class="holo-dot" aria-hidden="true"></span></p>
         <div>
           <div class="sec-head reveal">
             <h2 class="decode">Guild<br><em>Party members</em></h2>
             <p class="lead">The teams I've fought alongside on projects.</p>
           </div>
           <div class="party">
-            <div class="member r-legendary reveal"><span class="mava" aria-hidden="true">PV</span><div><p class="mname">PEGATRON VIETNAM</p><span class="mrole">Hai Phong · 2026 – Now</span></div></div>
+            <div class="member r-legendary reveal"><span class="mava" aria-hidden="true">PV</span><div><p class="mname">PEGATRON VIETNAM</p><span class="mrole">Automation · AI Workflow · Process Improvement · since 2026</span></div></div>
             <div class="member r-epic reveal"><span class="mava" aria-hidden="true">GD</span><div><p class="mname">GD Studio</p><span class="mrole">Remote team · 2023 – 2025</span></div></div>
             <div class="member r-rare reveal"><span class="mava" aria-hidden="true">HU</span><div><p class="mname">HUST Lab</p><span class="mrole">Hanoi · 2021 – 2023</span></div></div>
             <div class="member r-rare reveal"><span class="mava" aria-hidden="true">GI</span><div><p class="mname">Gear Inc.</p><span class="mrole">Hanoi · 2020 – 2021</span></div></div>
@@ -1164,11 +1205,11 @@ a.tale:hover{transform:translateY(-2px);border-color:var(--acc)}
     </div>
   </section>
 
-  <!-- ===== 11 LORE ===== -->
+  <!-- ===== 10 LORE ===== -->
   <section class="sec" id="lore">
     <div class="wrap">
       <div class="in">
-        <p class="sh"><span class="no">11</span>Lore<span class="holo-dot" aria-hidden="true"></span></p>
+        <p class="sh"><span class="no">10</span>Lore<span class="holo-dot" aria-hidden="true"></span></p>
         <div>
           <div class="sec-head reveal">
             <h2 class="decode">Lore<br><em>Character story</em></h2>
@@ -1181,12 +1222,12 @@ a.tale:hover{transform:translateY(-2px);border-color:var(--acc)}
             </div>
             <div class="term-body">
               <p class="cmdline"><span class="pr">dkeiz@dev</span>:~$ whoami</p>
-              <p>Game dev and bug hunter — 7 years in, 2 games on Steam, 20+ projects in the log.</p>
+              <p>Unity game dev, level design and automation — 7 years in, 2 games on Steam, 20+ projects in the log.</p>
               <p class="cmdline"><span class="pr">dkeiz@dev</span>:~$ cat ./story.txt</p>
-              <p>I started on a Unity build pipeline at Gear Inc. in 2020, spent two years cleaning datasets and hunting bugs in a HUST lab, then went full game dev at GD Studio — gameplay systems, enemy AI and bullet-hell performance, through to level design and QA. Two of those games made it to Steam.</p>
-              <p>I like systems that are simple but durable: code a teammate can read, maintain and not curse at. Good architecture is the kind a newcomer understands in ten minutes — not the kind that needs a wiki.</p>
-              <p>Meanwhile I've wrapped up my M.Eng. in ICT at HUST and picked up a BBA at PTIT in 2026 — because shipping games is half engineering, half everything else. These days I also consult on AI workflows at PEGATRON.</p>
-              <p>Off the clock I keep studying — learning while shipping is how I level up fastest.</p>
+              <p>I enjoy building systems that make things work better.</p>
+              <p>In games, that means creating gameplay systems and levels that deliver meaningful player experiences.</p>
+              <p>In automation, it means reducing repetitive work, improving data accuracy and making complex workflows easier to manage.</p>
+              <p>Whether I'm building a game or a web application, I value clear design, reliable systems and practical results.</p>
               <p class="cmdline"><span class="pr">dkeiz@dev</span>:~$ status --current</p>
               <p><span class="ok">●</span> Open — ready for the next quest.</p>
               <p class="cmdline"><span class="pr">dkeiz@dev</span>:~$ <span class="term-caret" aria-hidden="true"></span></p>
@@ -1198,11 +1239,11 @@ a.tale:hover{transform:translateY(-2px);border-color:var(--acc)}
     </div>
   </section>
 
-  <!-- ===== 12 CONTACT ===== -->
+  <!-- ===== 11 CONTACT ===== -->
   <section class="sec" id="contact">
     <div class="wrap">
       <div class="in">
-        <p class="sh"><span class="no">12</span>Recruit<span class="holo-dot" aria-hidden="true"></span></p>
+        <p class="sh"><span class="no">11</span>Recruit<span class="holo-dot" aria-hidden="true"></span></p>
         <div>
           <div class="sec-head reveal">
             <h2 class="decode">Recruit<br><em>Get in touch</em></h2>
@@ -1253,7 +1294,7 @@ a.tale:hover{transform:translateY(-2px);border-color:var(--acc)}
     <p class="foot-mark"><img class="brand-leaf foot-leaf" src="assets/logo.svg" alt="" aria-hidden="true" width="30" height="31">DKEIZ.DQ<span class="cur" aria-hidden="true"></span></p>
     <p class="foot-quote">“Life is a game. Skip tutorial, fight the boss, rewrite the rules.”</p>
     <div class="foot-meta">
-      <span>© <span id="year">2026</span> Đào Quang Dương · Character Sheet</span>
+      <span>© <span id="year">2026</span> Đào Quang Dương (Dkeiz Dương) · Character Sheet</span>
       <span><a href="#hero">Back to top ↑</a></span>
     </div>
   </div>
