@@ -517,9 +517,10 @@ a.tale:hover{transform:translateY(-2px);border-color:var(--acc)}
 
 /* ---------- GUILD ---------- */
 .party{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
-.member{--acc:var(--rare);border:1px solid var(--line);border-radius:14px;padding:16px;background:var(--panel);display:grid;grid-template-columns:64px minmax(0,1fr);gap:13px;align-items:center}
-.mava{width:64px;height:48px;border-radius:10px;display:grid;place-items:center;font-family:var(--mono);font-weight:800;font-size:.95rem;color:var(--ink);border:1px solid var(--acc);background:rgba(239,233,221,.03);overflow:hidden}
-.mava img{max-width:calc(100% - 12px);max-height:calc(100% - 12px);width:auto;height:auto;display:block}
+.member{--acc:var(--rare);border:1px solid var(--line);border-radius:14px;padding:16px;background:var(--panel);display:grid;gap:14px}
+.mava{width:100%;height:72px;border-radius:10px;padding:12px;border:1px solid var(--acc);background:rgba(239,233,221,.03);overflow:hidden}
+.mava img{width:100%;height:100%;object-fit:contain;display:block}
+.mava.light{background:#fff}
 .mname{font-family:var(--mono);font-weight:700;font-size:.95rem;color:var(--ink);margin:0}
 .mrole{font-family:var(--mono);font-size:11px;color:var(--muted);display:block;margin-top:3px}
 
@@ -1199,9 +1200,9 @@ a.tale:hover{transform:translateY(-2px);border-color:var(--acc)}
             <p class="lead">The teams I've fought alongside on projects.</p>
           </div>
           <div class="party">
-            <div class="member r-legendary reveal"><span class="mava"><img src="assets/guild/pegatron.png" alt="PEGATRON logo"></span><div><p class="mname">Pegatron VN</p><span class="mrole">Haiphong ·</br>2026 - now</span></div></div>
+            <div class="member r-legendary reveal"><span class="mava light"><img src="assets/guild/pegatron.png" alt="PEGATRON logo"></span><div><p class="mname">Pegatron VN</p><span class="mrole">Haiphong ·</br>2026 - now</span></div></div>
             <div class="member r-epic reveal"><span class="mava"><img src="assets/guild/gd-studio.png" alt="GD Studio logo"></span><div><p class="mname">GD Studio</p><span class="mrole">China · Remote</br>2023 – 2025</span></div></div>
-            <div class="member r-rare reveal"><span class="mava"><img src="assets/guild/hust-lab.png" alt="HUST Lab logo"></span><div><p class="mname">SoICT Lab</p><span class="mrole">Hanoi ·</br>2021 – 2023</span></div></div>
+            <div class="member r-rare reveal"><span class="mava light"><img src="assets/guild/hust-lab.png" alt="HUST Lab logo"></span><div><p class="mname">SoICT Lab</p><span class="mrole">Hanoi ·</br>2021 – 2023</span></div></div>
             <div class="member r-rare reveal"><span class="mava"><img src="assets/guild/gear-inc.png" alt="Gear Inc. logo"></span><div><p class="mname">Gear Inc.</p><span class="mrole">Hanoi ·</br>2020 – 2021</span></div></div>
           </div>
         </div>
@@ -1267,7 +1268,7 @@ a.tale:hover{transform:translateY(-2px);border-color:var(--acc)}
             </a>
             <a class="contact-row reveal" href="tel:+84356621169">
               <span class="cico"><svg class="od-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.8 19.8 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.8 19.8 0 012.08 4.18 2 2 0 014.06 2h3a2 2 0 012 1.72c.13.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0122 16.92z"></path></svg></span>
-              <span><span class="clabel">Phone</span><span class="cval">+84 356 621 169</span></span>
+              <span><span class="clabel">Phone</span><span class="cval">+84 356 621 169 (ZALO)</span></span>
               <span class="cgo" aria-hidden="true">→</span>
             </a>
             <a class="contact-row reveal" href="duongdq.cv.pdf" download>
