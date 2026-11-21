@@ -2,7 +2,7 @@
 <html lang="en"><head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Dkeiz Dương — Character Sheet · Unity Game Dev · Level Design · Automation</title>
+<title>Dkeiz Dương — Character Sheet · Game Dev & Design · Automation</title>
 <meta name="description" content="Dkeiz Duong — Unity Game Developer, Level Designer and Automation Developer. Building gameplay systems, designing player experiences, and developing tools and workflows that improve efficiency.">
 <meta name="color-scheme" content="dark">
 <meta name="theme-color" content="#070606">
@@ -189,8 +189,9 @@ h2.decode{
 }
 .brand{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-weight:700;letter-spacing:.06em;white-space:nowrap}
 .brand-leaf{block-size:22px;inline-size:auto;display:block}
-.foot-leaf{block-size:.78em}
+.foot-leaf{block-size:.91em}
 .cur{inline-size:8px;block-size:15px;background:var(--holo);display:inline-block;animation:blink 1.1s steps(1) infinite}
+.foot-mark .cur{inline-size:.42em;block-size:.78em}
 @keyframes blink{50%{opacity:0}}
 .nav-links{display:flex;align-items:center;gap:22px;padding-right:12px}
 .nav-links a{color:var(--muted);text-decoration:none;transition:color .2s ease;white-space:nowrap}
@@ -604,7 +605,7 @@ a.tale:hover{transform:translateY(-2px);border-color:var(--acc)}
       <a class="ts-btn"  text-decoration: none href="duongdq.cv.pdf" download>View CV</a>
     </div>
     <p class="ts-toast" id="tsToast" role="status" aria-live="polite"></p>
-    <p class="ts-hint">Press Esc to start</p>
+    <p class="ts-hint">Press any key to start</p>
   </div>
 </div>
 <noscript><style>.title-screen{display:none}</style></noscript>
@@ -1518,9 +1519,9 @@ a.tale:hover{transform:translateY(-2px);border-color:var(--acc)}
     });
   }
   document.addEventListener('keydown', function (ev) {
+    if (titleScreen && !titleScreen.classList.contains('closed')) { closeTitle(); return; }
     if (ev.key !== 'Escape') { return; }
     if (qdialog && qdialog.classList.contains('open')) { closeQuest(); return; }
-    if (titleScreen && !titleScreen.classList.contains('closed')) { closeTitle(); return; }
     closeNav();
   });
 
