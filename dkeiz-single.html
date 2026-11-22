@@ -331,11 +331,11 @@ h2.decode{
 .pips i.on{background:var(--acc,var(--epic));border-color:var(--acc,var(--epic))}
 
 /* ---------- QUESTS ---------- */
-.quests{display:grid}
-.quest{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:18px;align-items:start;padding:22px 4px;border-top:1px solid var(--line)}
+.quests{display:grid;grid-auto-rows:1fr}
+.quest{display:grid;grid-template-columns:auto minmax(0,1fr) auto;grid-template-rows:1fr;gap:18px;align-items:start;padding:22px 4px;border-top:1px solid var(--line)}
 .quest:first-child{border-top:0}
-.qmark{font-family:var(--mono);font-size:11px;font-weight:800;letter-spacing:.1em;writing-mode:vertical-rl;transform:rotate(180deg);
-  color:var(--acc,var(--muted));border:1px solid var(--acc,var(--muted));border-radius:6px;padding:8px 5px;text-transform:uppercase;align-self:stretch;display:flex;align-items:center}
+.qmark{color:var(--acc,var(--muted));border:1px solid var(--acc,var(--muted));border-radius:6px;padding:8px 5px;align-self:stretch;display:flex;align-items:flex-end;justify-content:center}
+.qmark .qt{font-family:var(--mono);font-size:11px;font-weight:800;letter-spacing:.1em;writing-mode:vertical-rl;transform:rotate(180deg);text-transform:uppercase}
 .quest h3{font-family:var(--mono);font-size:1.05rem;font-weight:700;margin:0 0 6px;letter-spacing:-.01em;color:var(--ink)}
 .quest p{margin:0;color:var(--muted);font-size:.95rem;max-width:52ch}
 .qtags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
@@ -875,7 +875,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               data-tech="TypeScript,Next.js,SQL,Version Control"
               data-loot="Role:Full-Stack Developer|Status:In Development|Team:PEGATRON Vietnam|Focus:Automation"
               data-body="A data management system designed to improve the reliability and traceability of employee C&amp;B information: version control for C&amp;B data; working sheets and data reconciliation; conflict resolution before merging changes; data history, audit trail and rollback; import workflows for HRIS and employee data. PEGATRON Vietnam, Hai Phong, since 2026.">
-              <span class="qmark" aria-hidden="true">Epic</span>
+              <span class="qmark" aria-hidden="true"><span class="qt">Epic</span></span>
               <div>
                 <span class="qtype">Main Quest</span>
                 <h3>C&amp;B Data Monitoring &amp; Version Control</h3>
@@ -891,7 +891,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               data-tech="TypeScript,Next.js,Workflow Automation"
               data-loot="Role:Full-Stack Developer|Status:In Development|Team:PEGATRON Vietnam|Focus:Workflow Automation"
               data-body="A workflow system for collecting and managing employee C&amp;B information during onboarding: employee information collection; data import and validation; C&amp;B information tracking; error detection and correction workflow; reduced repetitive manual data handling. PEGATRON Vietnam, Hai Phong, since 2026.">
-              <span class="qmark" aria-hidden="true">Epic</span>
+              <span class="qmark" aria-hidden="true"><span class="qt">Epic</span></span>
               <div>
                 <span class="qtype">Main Quest</span>
                 <h3>C&amp;B Employee Onboarding System</h3>
@@ -907,7 +907,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               data-tech="Unity,Level Design,QA"
               data-loot="Role:Level Design + QA|Duration:8 months|Team:GD Studio|Store:Steam"
               data-body="Refined level design; tested gameplay, features and content; found, logged and tracked bugs; gave feedback on difficulty, progression, accessibility and UX. GD Studio (remote), Aug 2024 – Apr 2025.">
-              <span class="qmark" aria-hidden="true">Epic</span>
+              <span class="qmark" aria-hidden="true"><span class="qt">Epic</span></span>
               <div>
                 <span class="qtype">Main Quest</span>
                 <h3>Curtain Call</h3>
@@ -923,7 +923,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               data-tech="Unity,C#,Gameplay Systems"
               data-loot="Role:Gameplay Programmer|Duration:1 year|Engine:Unity|Store:Steam"
               data-body="Built the core gameplay systems: movement, combat, dodge and hit detection; modular skills; performance optimisation for dense bullet and enemy screens; enemy and boss AI; damage and difficulty balancing; roguelike systems — upgrades, gear and meta progression. GD Studio (remote), Aug 2023 – Jul 2024.">
-              <span class="qmark" aria-hidden="true">Legendary</span>
+              <span class="qmark" aria-hidden="true"><span class="qt">Legendary</span></span>
               <div>
                 <span class="qtype">Main Quest</span>
                 <h3>Noobs Want to Live</h3>
@@ -939,7 +939,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               data-tech="SQL,Data Cleaning,Visualization"
               data-loot="Role:Data Analyst / QA|Duration:2 years|Team:HUST Lab"
               data-body="Inspected, cleaned and processed a book dataset: missing values, categorical and numeric features (ratings, reviews); analysis and visualisation. HUST Lab, Apr 2021 – Mar 2023.">
-              <span class="qmark" aria-hidden="true">Rare</span>
+              <span class="qmark" aria-hidden="true"><span class="qt">Rare</span></span>
               <div>
                 <span class="qtype">Side Quest</span>
                 <h3>Book Recommendation System</h3>
@@ -955,7 +955,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               data-tech="Unity,Git,Agile"
               data-loot="Role:Intern|Duration:8 months|Team:Gear Inc."
               data-body="Supported the Unity build pipeline and asset workflow; worked in Agile with Git. Gear Inc., Hanoi, Jun 2020 – Jan 2021.">
-              <span class="qmark" aria-hidden="true">Common</span>
+              <span class="qmark" aria-hidden="true"><span class="qt">Common</span></span>
               <div>
                 <span class="qtype">Side Quest</span>
                 <h3>Kingdom Raids — Puzzle Wars</h3>
